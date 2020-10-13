@@ -27,7 +27,7 @@ class UserController extends Controller
         $checkUserHasCompany = Company::where('user_id',$user_id)->get()->toArray();
         
         if (!$checkUserHasCompany) {
-            return redirect('/test');
+            return redirect(route('company-create-form'));
         }
         else{
          
@@ -79,12 +79,9 @@ class UserController extends Controller
         return redirect('/user');
     }
 
-    public function companyTest()
+    public function companyCreateForm()
     {
-
-          
             return view('user.create-company');
-      
     }
 
     public function createCompany(Request $req)
@@ -132,18 +129,22 @@ class UserController extends Controller
         $user = Auth::user()->id;
         $companyID = $req->session()->get('company_id');
         $company = Company::where('user_id',$user)->Where('id',$companyID)->get();
-       
+        
         // return $company[0]->id;
         if (count($company) == 0) {
-           return redirect('/test');
+            return redirect(route('company-create-form'));
         }
         else{
              $contacts = Contacts::where('company_id',$company[0]->id)->get();
-            return view('dashboard.contacts')->with('company',$company)->with('contacts',$contacts);
+             $customer_count = count(Contacts::where('company_id',$company[0]->id)->where('contact_type','customer')->get());
+             $supplier_count = count(Contacts::where('company_id',$company[0]->id)->where('contact_type','supplier')->get());
+             $contact_count = array(
+                 'customer_count' => $customer_count,
+                 'supplier_count' => $supplier_count
+             );
+             return view('dashboard.contacts')->with('company',$company)->with('contacts',$contacts)->with('contact_count',$contact_count);
         }
-        // return $company;
-        // print_r($company);
-  
+
     }
 
     public function insertContacts(Request $req)
@@ -197,7 +198,7 @@ class UserController extends Controller
 
         DB::table('contact_tax_details')->insert($contact_tax_details);
         // DB::table('contact_tax_details')->insert($contact_tax_details);
-        return $req;
+        return redirect('/contacts');
         // return $contacts;
 
     }
@@ -243,9 +244,6 @@ class UserController extends Controller
     }
 
  
-
-
-
     public function userTaxes() {
         return view('dashboard.taxes');
     }

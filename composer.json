@@ -16,7 +16,8 @@
         "laravel/tinker": "^2.0",
         "laravel/ui": "2.4",
         "pusher/pusher-php-server": "^4.1",
-        "santigarcor/laratrust": "5.2.*"
+        "santigarcor/laratrust": "5.2.*",
+        "spatie/laravel-server-monitor": "^1.9"
     },
     "require-dev": {
         "facade/ignition": "^2.0",

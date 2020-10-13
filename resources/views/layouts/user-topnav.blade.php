@@ -13,21 +13,19 @@ $currentCompanyName = Session::get('companyName');
       <div class="container-fluid">
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <!-- Search form -->
-          <form class="mr-sm-3">
+          <form class="form-inline pr-3" id="navbar-dropdown">
             <div class="form-group mb-0">
               <div class="input-group input-group-alternative input-group-merge">
                 @if (!$currentCompanyName)
                 {{'Create a new company'}}
                 @else
+                <li class="nav-item dropdown">
                 <div class="dropdown show">
                   <a class="btn btn-secondary dropdown-toggle" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                  
                    {{$currentCompanyName}}
-              
-                   
                   </a>
                   <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                    
+
                     <p class="dropdown-item">{{$currentCompanyName}}</p>
                     <div class="dropdown-divider"></div>
                     <a class="dropdown-item" href="#">Files</a>
@@ -45,11 +43,12 @@ $currentCompanyName = Session::get('companyName');
                     <a class="dropdown-item" href="/test">Add a new Company</a>
                     <div class="dropdown-divider"></div>
                     <a class="dropdown-item" href="#">Something else here</a>
-               
+
                   </div>
                 </div>
+                </li>
                 @endif
-              
+
               </div>
             </div>
             {{-- <button type="button" class="close" data-action="search-close" data-target="#navbar-search-main" aria-label="Close">
@@ -78,7 +77,7 @@ $currentCompanyName = Session::get('companyName');
                   <h6 class="text-sm text-muted m-0">You have <strong class="text-primary">13</strong> notifications.</h6>
                 </div>
                 <!-- List group -->
-                
+
                 <!-- View all -->
                 <a href="#!" class="dropdown-item text-center text-primary font-weight-bold py-3">View all</a>
               </div>
@@ -87,7 +86,7 @@ $currentCompanyName = Session::get('companyName');
           <ul class="navbar-nav align-items-center ml-auto ml-md-0">
             {{-- <li class="nav-item float-left">
               <a class="nav-link pr-0" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-             
+
               <div class="media align-items-center">
               <div class="media-body ml-2 d-none d-lg-block">
                 <span class="mb-0 text-sm  font-weight-bold">{{$user->firstname.' '.$user->lastname}}</span>

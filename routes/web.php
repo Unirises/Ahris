@@ -19,6 +19,13 @@ Route::get('/', 'HomeController@index');
 Route::get('/blogs', function () {
     return view('blogs');
 });
+Route::get('/test-pusher', function () {
+    return view('admin.test-pusher');
+});
+Route::get('/test-pusher1', function () {
+    event(new App\Events\MyEvent('Mga boss testing lang'));
+    return "Event has been sent!";
+});
 
 Auth::routes(['verify' => true]);
 // Route::get('/home', 'HomeController@index')->name('home');
@@ -41,7 +48,7 @@ Route::get('/user/company/tax-rate', 'UserController@companyTaxRate')->name('use
 Route::get('/user/company/record-users', 'UserController@companyRecordUsers')->name('user-record-users');
 
 //POST
-Route::get('/test', 'UserController@companyTest')->name('user-test');
+Route::get('/user/company/create', 'UserController@companyCreateForm')->name('company-create-form');
 Route::get('/user/company/{companyID}', 'UserController@logCompany')->name('login-company');
 
 Route::post('/user/update/profile', 'UserController@update')->name('user-profile');

@@ -40,7 +40,7 @@ $currentCompanyName = Session::get('companyName');
                   <a class="dropdown-item" href="/user/company/{{$company_item->id}}">{{$company_item->company_name}}</a>
                     @endforeach
 
-                    <a class="dropdown-item" href="/test">Add a new Company</a>
+                    <a class="dropdown-item" href="{{route('company-create-form')}}">Add a new Company</a>
                     <div class="dropdown-divider"></div>
                     <a class="dropdown-item" href="#">Something else here</a>
 
@@ -117,10 +117,7 @@ $currentCompanyName = Session::get('companyName');
                   <i class="ni ni-settings-gear-65"></i>
                   <span>Settings</span>
                 </a>
-                <a href="/test" class="dropdown-item">
-                  <i class="ni ni-settings-gear-65"></i>
-                  <span>Create Company (Temporary)</span>
-                </a>
+         
                 <a href="#!" class="dropdown-item">
                   <i class="ni ni-calendar-grid-58"></i>
                   <span>Activity</span>

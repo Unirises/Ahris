@@ -22,3 +22,4 @@
       alert(JSON.stringify(data));
     });
   </script>
+  <script src="https://unpkg.com/bootstrap-table@1.18.0/dist/bootstrap-table.min.js"></script>

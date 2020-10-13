@@ -3,6 +3,8 @@
 
 <head>
   @extends('layouts.asset-css')
+
+  
 </head>
 
 <body>
@@ -40,19 +42,25 @@
                                     <span class="text-muted"> <a href="" id="edit-user"> </a> Edit </span>
                                   </div>
                                 <div class="col-sm-3 pt-3">
-                                    <span>Customers <span class="text-muted"> 0 </span>
+                                <span>Customers: <span class="text-muted"> {{$contact_count['customer_count']}}</span>
                                   </div>
                                   <div class="col-sm-3 pt-3">
-                                    <span>Suppliers <span class="text-muted"> 0 </span>
+                                    <span>Suppliers: <span class="text-muted"> {{$contact_count['supplier_count']}} </span>
                                   </div>
-                                  <div class="col-sm">
+                                  {{-- <div class="col-sm">
                                     <input type="search" class="form-control" id="exampleFormControlInput1" placeholder="Search">
-                                  </div>
+                                  </div> --}}
                               </div>
                             </div>
                             <!-- Light table -->
+                            <div class="col-md">
+
+                            
                             <div class="table-responsive">
-                              <table class="table align-items-center table-flush table-hover">
+                              <table data-toggle="table"
+                              data-search="true"
+                              data-pagination="true"
+                              class="table align-items-center table-flush table-hover">
                                 <thead class="thead-light">
                                   <tr>
                                     <th>
@@ -61,8 +69,8 @@
                                         <label class="custom-control-label" for="table-check-all"></label>
                                       </div>
                                     </th>
-                                    <th>Contact</th>
-                                    <th>Email</th>
+                                    <th  data-sortable="true" data-field="Contact">Contact</th>
+                                    <th  data-sortable="true" data-field="Email">Email</th>
                                     <th>You Owe Them</th>
                                     <th>They Owe You</th>
                                   </tr>
@@ -93,13 +101,12 @@
                                     </td>
                                   </tr>
                                   @endforeach
-                                  
                                 </tbody>
                               </table>
                             </div>
                           </div>
+                          </div>
                     </div>
-
 
                     {{-- Customers Tab Card --}}
                     <div class="tab-pane fade" id="tabs-icons-text-2" role="tabpanel" aria-labelledby="tabs-icons-text-2-tab">

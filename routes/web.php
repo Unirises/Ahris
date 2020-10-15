@@ -27,6 +27,10 @@ Route::get('/test-pusher1', function () {
     return "Event has been sent!";
 });
 
+Route::get('/debug-sentry', function () {
+    return Student::all();
+});
+
 Auth::routes(['verify' => true]);
 // Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/user', 'UserController@index')->name('user');

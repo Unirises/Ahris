@@ -23,3 +23,8 @@
     });
   </script>
   <script src="https://unpkg.com/bootstrap-table@1.18.0/dist/bootstrap-table.min.js"></script>
+  <script
+  src="https://browser.sentry-cdn.com/5.26.0/bundle.min.js"
+  integrity="sha384-VGljl8BTZL6Py4DmlOaYmfkOwp8mD3PrmD2L+fN446PZpsrIHuDhX7mnV/L5KuNR"
+  crossorigin="anonymous"
+></script>

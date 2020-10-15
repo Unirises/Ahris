@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\URL;
 use App\User;
 use App\Company;
 use App\Contacts;
@@ -215,7 +216,7 @@ class UserController extends Controller
             'user_id' => $user_id
         );
         $mySession = session($companyDetails);
-        return redirect('/contacts'); 
+        return redirect(URL::previous()); 
     }
 
     public function userPersonalSettings() {

@@ -3,10 +3,14 @@
 namespace App\Exceptions;
 
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
+use Symfony\Component\HttpKernel\Exception\HttpException;
 use Throwable;
 
 class Handler extends ExceptionHandler
 {
+
+   
+
     /**
      * A list of the exception types that are not reported.
      *
@@ -34,8 +38,14 @@ class Handler extends ExceptionHandler
      *
      * @throws \Exception
      */
+
+    private $sentryID;
+
     public function report(Throwable $exception)
     {
+        if (app()->bound('sentry') && $this->shouldReport($exception)) {
+            $this->sentryID = app('sentry')->captureException($exception);
+        }
         parent::report($exception);
     }
 
@@ -50,6 +60,11 @@ class Handler extends ExceptionHandler
      */
     public function render($request, Throwable $exception)
     {
-        return parent::render($request, $exception);
+        if ($this->shouldReport($exception) && !$this->isHttpException($exception) && !config('app.debug')) {
+            $exception = new HttpException(500, 'Whoops!');
+        }
+        // return parent::render($request, $exception);
+        return response()->view('errors.500',['sentryID' => $this->sentryID,],500);
+
     }
 }

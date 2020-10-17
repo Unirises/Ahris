@@ -117,7 +117,7 @@ $currentCompanyName = Session::get('companyName');
                   <i class="ni ni-settings-gear-65"></i>
                   <span>Settings</span>
                 </a>
-         
+
                 <a href="#!" class="dropdown-item">
                   <i class="ni ni-calendar-grid-58"></i>
                   <span>Activity</span>
@@ -128,7 +128,7 @@ $currentCompanyName = Session::get('companyName');
                 </a>
                 <div class="dropdown-divider"></div>
                 <a href="{{ route('logout') }}" class="dropdown-item">
-                  <i class="ni ni-user-run"></i>
+                  <i class="fas fa-sign-out-alt"></i>
                   <span>Logout</span>
                 </a>
               </div>

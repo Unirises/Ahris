@@ -35,7 +35,7 @@
                   <h6 class="text-sm text-muted m-0">You have <strong class="text-primary">13</strong> notifications.</h6>
                 </div>
                 <!-- List group -->
-                
+
                 <!-- View all -->
                 <a href="#!" class="dropdown-item text-center text-primary font-weight-bold py-3">View all</a>
               </div>
@@ -49,7 +49,7 @@
                    <img alt="Image placeholder" src="https://i.pinimg.com/236x/8c/5a/1d/8c5a1d217ef3690c99ed9cc06c3bc458.jpg">
                   </span>
                   <div class="media-body ml-2 d-none d-lg-block">
-                    
+
                     <span class="mb-0 text-sm  font-weight-bold">{{$user->firstname}} {{$user->lastname}}</span>
                   </div>
                 </div>
@@ -76,8 +76,8 @@
                 </a>
                 <div class="dropdown-divider"></div>
               <a href="/admin/logout" class="dropdown-item">
-                  <i class="ni ni-user-run"></i>
-                  <span>Logout</span>
+                  <i class="fas fa-sign-out-alt"></i>
+                  <span>Logoutss</span>
                 </a>
               </div>
             </li>

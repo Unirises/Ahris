@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\URL;
 use App\User;
 use App\Company;
 use App\Contacts;
@@ -11,13 +12,48 @@ use App\CurrentCompanyLog;
 use DB;
 use Illuminate\Support\Facades\Auth;
 use  App\Http\Controllers\Session;
+use Illuminate\Support\Facades\Crypt;
+use Maatwebsite\Excel\Facades\Excel;
+use App\Exports\ContactsExport;
 
 class UserController extends Controller
 {
 
     public function __construct()
     {
-        $this->middleware(['role:user','verified']);
+        $this->middleware(['auth','role:user','verified']);
+    }
+
+    
+
+    public function exportTest(Request $req)
+    {
+       $companyID = $req->session()->get('company_id');
+       $contactExport = new ContactsExport($companyID);
+    //    $cc = Contacts::select('displayname', 'company_name',  'firstname','lastname', 'contact_type', 'type','email','phone_number','mobile_number','fax','other','website','street','barangay','city','province','zipcode')->where('company_id', $companyID)->get();
+    //    return $cc; 
+       return Excel::download($contactExport, 'contacts.csv');
+  
+    }
+    public function exportSupplier(Request $req)
+    {
+       $companyID = $req->session()->get('company_id');
+       $contactExport = new ContactsExport($companyID);
+       $contactExport->setType('supplier');
+       //    $cc = Contacts::select('displayname', 'company_name',  'firstname','lastname', 'contact_type', 'type','email','phone_number','mobile_number','fax','other','website','street','barangay','city','province','zipcode')->where('company_id', $companyID)->get();
+    //    return $cc; 
+       return Excel::download($contactExport, 'contacts.csv');
+  
+    }
+    public function exportCustomer(Request $req)
+    {
+       $companyID = $req->session()->get('company_id');
+       $contactExport = new ContactsExport($companyID);
+       $contactExport->setType('customer');
+    //    $cc = Contacts::select('displayname', 'company_name',  'firstname','lastname', 'contact_type', 'type','email','phone_number','mobile_number','fax','other','website','street','barangay','city','province','zipcode')->where('company_id', $companyID)->get();
+    //    return $cc; 
+       return Excel::download($contactExport, 'contacts.csv');
+  
     }
 
     public function index()
@@ -45,6 +81,65 @@ class UserController extends Controller
         // $company = Company::all();
         // return view('user.index', compact('user'));
         // return view('user.index', compact('user'));
+    }
+
+  
+    public function testEdit($contactID)
+    {   $decrypted = Crypt::decryptString($contactID);
+        $contacts = Contacts::where('id',$decrypted)->get()->toArray();
+        $contact_person = DB::table('contact_person_address')->where('contact_id',$decrypted)->get()->toArray();
+        $contact_tax = DB::table('contact_tax_details')->where('contact_id',$decrypted)->get()->toArray();
+        // return $contacts;
+        return view('dashboard.edit-contacts', compact('contacts'))->with('contact',array('person' => $contact_person[0],'tax' => $contact_tax[0], 'id'=>$contactID));
+    }
+    public function updateContacts(Request $req)
+    {
+        $decrypted = Crypt::decryptString($req->input('contact_id'));
+        $contacts = Contacts::find($decrypted);
+        if (isset($req->firstname) && isset($req->lastname)) {
+            $contacts->firstname = $req->input('firstname');
+            $contacts->lastname = $req->input('lastname');
+            $contacts->company_name = null;
+        }
+        else{
+            $contacts->company_name = $req->input('company_name');
+            $contacts->firstname = null;
+            $contacts->lastname = null;
+        }
+        $contacts->displayname = $req->input('displayname');
+        $contacts->email = $req->input('email');
+        $contacts->phone_number = $req->input('phone');
+        $contacts->mobile_number = $req->input('mobile');
+        $contacts->fax = $req->input('fax');
+        $contacts->other = $req->input('other');
+        $contacts->website = $req->input('website');
+        $contacts->street = $req->input('address');
+        $contacts->barangay = $req->input('barangay');
+        $contacts->city = $req->input('city');
+        $contacts->province = $req->input('province');
+        $contacts->zipcode = $req->input('zip_code');
+        $contacts->save();
+        $contact_person_address = array(
+            // 'contact_id' => $contacts->id,
+             'title' =>  $req->input('title'),
+             'firstname' => $req->input('first_name'),
+             'middlename' => $req->input('middle_name'),
+             'lastname' =>  $req->input('last_name'),
+             'suffix' =>  $req->input('suffix'),
+             'email' =>  $req->input('email_add_person')
+        );
+        DB::table('contact_person_address')->where('contact_id',$decrypted)->update($contact_person_address);
+        $contact_tax_details = array(
+            // 'contact_id' => $contacts->id,
+            'sales_settings' => $req->input('sales_settings'),
+            'sales_settings_account' => $req->input('sales_settings_account'),
+            'tin_1' => $req->input('tax_1'),
+            'tin_2' => $req->input('tax_2'),
+            'credit_limit_account' => $req->input('credit_limit'),
+            'credit_limit_block' =>  $req->input('credit_block')
+        );
+        DB::table('contact_tax_details')->where('contact_id',$decrypted)->update($contact_tax_details);
+        return redirect('/contacts');
     }
 
     public function logout(Request $req) {
@@ -88,7 +183,6 @@ class UserController extends Controller
     {
      
         $user = Auth::user();
-
         $company = new Company();
         $company->company_name = $req->company_name;
         $company->user_id =  $user->id;
@@ -125,7 +219,7 @@ class UserController extends Controller
     }
 
     public function userContacts(Request $req) {
-
+      
         $user = Auth::user()->id;
         $companyID = $req->session()->get('company_id');
         $company = Company::where('user_id',$user)->Where('id',$companyID)->get();
@@ -215,7 +309,7 @@ class UserController extends Controller
             'user_id' => $user_id
         );
         $mySession = session($companyDetails);
-        return redirect('/contacts'); 
+        return redirect(URL::previous()); 
     }
 
     public function userPersonalSettings() {

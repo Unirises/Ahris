@@ -9,11 +9,14 @@
           </button>
         </div>
         <div class="modal-body">
+          <form action="{{route('user-insert-contacts')}}" method="post">
+            @csrf
            @include('layouts.contact-addCustomerBusiness')
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-youtube" data-dismiss="modal">Close</button>
-          <button type="button" class="btn btn-success">Save changes</button>
+          <button type="submit" class="btn btn-success">Save changes</button>
+        </form>
         </div>
       </div>
     </div>

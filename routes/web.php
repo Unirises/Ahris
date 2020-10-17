@@ -27,6 +27,10 @@ Route::get('/test-pusher1', function () {
     return "Event has been sent!";
 });
 
+Route::get('/debug-sentry', function () {
+    return Student::all();
+});
+
 Auth::routes(['verify' => true]);
 // Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/user', 'UserController@index')->name('user');
@@ -46,13 +50,17 @@ Route::get('/user/company/record-product-services', 'UserController@companyRecor
 Route::get('/user/company/record-suppliers', 'UserController@companyRecordSuppliers')->name('user-record-suppliers');
 Route::get('/user/company/tax-rate', 'UserController@companyTaxRate')->name('user-tax-rate');
 Route::get('/user/company/record-users', 'UserController@companyRecordUsers')->name('user-record-users');
-
+Route::get('test/edit/{contactID}', 'UserController@testEdit');
+Route::get('test/export', 'UserController@exportTest')->name('test-export');
+Route::get('test/export/supplier', 'UserController@exportSupplier')->name('test-export-supplier');
+Route::get('test/export/customer', 'UserController@exportCustomer')->name('test-export-customer');
 //POST
 Route::get('/user/company/create', 'UserController@companyCreateForm')->name('company-create-form');
 Route::get('/user/company/{companyID}', 'UserController@logCompany')->name('login-company');
 
 Route::post('/user/update/profile', 'UserController@update')->name('user-profile');
 Route::post('/contacts/insert', 'UserController@insertContacts')->name('user-insert-contacts');
+Route::post('/contacts/update', 'UserController@updateContacts')->name('user-update-contacts');
 Route::post('/user/create/company', 'UserController@createCompany')->name('user-create-company');
 
 

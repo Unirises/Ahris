@@ -33,7 +33,7 @@
                 <div class="tab-content" id="myTabContent">
                     <div class="tab-pane fade show active" id="tabs-icons-text-1" role="tabpanel" aria-labelledby="tabs-icons-text-1-tab">
                         <button type="button" class="btn btn-success mb-3" data-toggle="modal" data-target="#accountAddBusinessCustomer">Add Contacts</button>
-                        <button type="button" class="btn btn-secondary mb-3">Export</button>
+                        <a href="{{route('test-export')}}" class="btn btn-secondary mb-3">Export</a>
                         @include('layouts.contacts-allUsers')
                     </div>
 
@@ -45,7 +45,7 @@
                                 @include('layouts.account-addCustomer-Individual')
                                 <button type="button" class="btn btn-primary mb-3" data-toggle="modal" data-target="#accountAddBusinessCustomer">Add Business Customer</button>
                                 <button type="button" class="btn btn-default mb-3" data-toggle="modal" data-target="#accountAddIndividualCustomer">Add Individual Customer</button>
-                                <button type="button" class="btn btn-secondary mb-3">Export</button>
+                                <a href="{{route('test-export-customer')}}" class="btn btn-secondary mb-3">Export</a>
                                 @include('layouts.contacts-allCustomer')
                                     {{-- Column for Business --}}
                             </div>
@@ -59,7 +59,7 @@
                                 @include('layouts.account-addSupplier-Individual')
                                 <button type="button" class="btn btn-primary mb-3" data-toggle="modal" data-target="#accountAddBusinessSupplier">Add Business Supplier</button>
                                 <button type="button" class="btn btn-default mb-3" data-toggle="modal" data-target="#accountAddIndividualSupplier">Add Individual Supplier</button>
-                                <button type="button" class="btn btn-secondary mb-3">Export</button>
+                                <a href="{{route('test-export-supplier')}}" class="btn btn-secondary mb-3">Export</a>
                                 @include('layouts.contacts-allSupplier')
 
                             </div>

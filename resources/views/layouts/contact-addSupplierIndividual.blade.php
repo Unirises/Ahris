@@ -5,8 +5,7 @@
                                           <!-- Form groups used in grid -->
                                           <div class="row">
                                             <div class="col-md-3">
-                                              <form action="{{route('user-insert-contacts')}}" method="post">
-                                                @csrf
+                                        
                                               <div class="form-group">
                                                 <label class="form-control-label" for="example3cols1Input">First Name</label>
                                                 <input type="text" name="firstname" class="form-control" id="example3cols1Input">
@@ -241,7 +240,7 @@
                                             <input type="hidden" name="contact_type" value="customer">
                                             <input type="hidden" name="company_id" value="{{$company[0]->id}}">
                                             <input type="hidden" name="type" value="individual">
-                                            </form>
+                                 
                                             </div>
                                           </div>
                                           </div>

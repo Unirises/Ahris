@@ -6,8 +6,7 @@
       <div class="row">
 
         <div class="col-md-6">
-          <form action="{{route('user-insert-contacts')}}" method="post">
-            @csrf
+      
           <div class="form-group">
             <label class="form-control-label" for="example3cols1Input">Company Name</label>
             <input type="text" name="company_name" class="form-control" id="example3cols1Input">
@@ -247,7 +246,8 @@
             <input type="hidden" name="contact_type" value="customer">
           <input type="hidden" name="company_id" value="{{ $company[0]->id}}">
             <input type="hidden" name="type" value="business">
-          </form>
+            
+   
           </div>
         </div>
       </div>

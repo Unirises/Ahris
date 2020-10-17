@@ -36,6 +36,9 @@ class RedirectIfAuthenticated
             else if ($roleID[0]->role_id == 1) {
                 return redirect("/admin/home");
             }
+            else{
+                return redirect("/");
+            }
 
             // print_r(Auth::user());
             // $role = Role::where('id',$user->id)->get();

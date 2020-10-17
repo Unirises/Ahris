@@ -44,7 +44,8 @@
             </li>
 
              <li class="nav-item">
-              <a class="nav-link" href="{{route('admin-web-monitoring')}}">
+              {{-- <a class="nav-link" href="{{route('admin-web-monitoring')}}"> --}}
+              <a class="nav-link" target="_blank" href="https://sentry.io/organizations/ahrisph/performance/?project=5462988">
                 <i class="ni ni-chart-bar-32 text-success"></i>
                 <span class="nav-link-text">Website Monitoring</span>
               </a>

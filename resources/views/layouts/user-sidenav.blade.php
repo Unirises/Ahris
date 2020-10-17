@@ -58,7 +58,7 @@
             </li>
 
             <li class="nav-item">
-              <a class="nav-link" href="contacts">
+            <a class="nav-link" href="{{route('user-contacts')}}">
                 <i class="ni ni-key-25 text-gray-800"></i>
                 <span class="nav-link-text">Contacts</span>
               </a>

@@ -5,19 +5,19 @@
                                           <!-- Form groups used in grid -->
                                          
                                           <div class="row">
-                                           
+
                                             <div class="col-md-6">
-                                              <form action="{{route('user-insert-contacts')}}" method="post">
+                                              <form action="{{route('user-update-contacts')}}" method="post">
                                                 @csrf
                                               <div class="form-group">
                                                 <label class="form-control-label" for="example3cols1Input">Company Name</label>
-                                                <input type="text" name="company_name" class="form-control" id="example3cols1Input">
+                                                <input type="text" name="company_name" class="form-control" id="example3cols1Input" value="{{$contacts[0]['company_name']}}">
                                               </div>
                                             </div>
                                             <div class="col-md-6">
                                               <div class="form-group">
                                                 <label class="form-control-label" for="example3cols2Input">Email</label>
-                                                <input type="text" name="email" class="form-control" id="example3cols2Input">
+                                                <input type="text" name="email" class="form-control" id="example3cols2Input" value="{{$contacts[0]['email']}}">
                                               </div>
                                             </div>
                                           </div>
@@ -25,25 +25,25 @@
                                             <div class="col-sm-6 col-md-3">
                                               <div class="form-group">
                                                 <label class="form-control-label" for="example4cols1Input">Display Name As</label>
-                                                <input type="text" name="displayname" class="form-control" id="example4cols1Input">
+                                                <input type="text" name="displayname" class="form-control" id="example4cols1Input" value="{{$contacts[0]['displayname']}}">
                                               </div>
                                             </div>
                                             <div class="col-sm-6 col-md-3">
                                               <div class="form-group">
                                                 <label class="form-control-label" for="example4cols2Input">Phone</label>
-                                                <input type="text" name="phone" class="form-control" id="example4cols2Input">
+                                                <input type="text" name="phone" class="form-control" id="example4cols2Input" value="{{$contacts[0]['phone_number']}}">
                                               </div>
                                             </div>
                                             <div class="col-sm-6 col-md-3">
                                               <div class="form-group">
                                                 <label class="form-control-label" for="example4cols3Input">Mobile</label>
-                                                <input type="text" name="mobile" class="form-control" id="example4cols3Input">
+                                                <input type="text" name="mobile" class="form-control" id="example4cols3Input" value="{{$contacts[0]['mobile_number']}}">
                                               </div>
                                             </div>
                                             <div class="col-sm-6 col-md-3">
                                               <div class="form-group">
                                                 <label class="form-control-label" for="example4cols3Input">Fax</label>
-                                                <input type="text" name="fax" class="form-control" id="example4cols3Input">
+                                                <input type="text" name="fax" class="form-control" id="example4cols3Input" value="{{$contacts[0]['fax']}}">
                                               </div>
                                             </div>
                                           </div>
@@ -51,13 +51,13 @@
                                             <div class="col-md-6">
                                               <div class="form-group">
                                                 <label class="form-control-label" for="example2cols1Input">Other</label>
-                                                <input type="text" name="other" class="form-control" id="example2cols1Input">
+                                                <input type="text" name="other" class="form-control" id="example2cols1Input" value="{{$contacts[0]['other']}}">
                                               </div>
                                             </div>
                                             <div class="col-md-6">
                                               <div class="form-group">
                                                 <label class="form-control-label" for="example2cols2Input">Website</label>
-                                                <input type="text" name="website" class="form-control" id="example2cols2Input">
+                                                <input type="text" name="website" class="form-control" id="example2cols2Input" value="{{$contacts[0]['website']}}">
                                               </div>
                                             </div>
                                           </div>
@@ -66,19 +66,19 @@
                                             <div class="col-md-4">
                                               <div class="form-group">
                                                 <label class="form-control-label" for="example2cols1Input">Street</label>
-                                                <input type="text" name="address" class="form-control" id="example2cols1Input">
+                                                <input type="text" name="address" class="form-control" id="example2cols1Input" value="{{$contacts[0]['street']}}">
                                               </div>
                                             </div>
                                             <div class="col-md-4">
                                               <div class="form-group">
                                                 <label class="form-control-label" for="example2cols2Input">Barangay</label>
-                                                <input type="text" name="barangay" class="form-control" id="example2cols2Input">
+                                                <input type="text" name="barangay" class="form-control" id="example2cols2Input" value="{{$contacts[0]['barangay']}}">
                                               </div>
                                             </div>
                                             <div class="col-md-4">
                                                 <div class="form-group">
                                                   <label class="form-control-label" for="example2cols2Input">State / Province</label>
-                                                  <input type="text" name="province" class="form-control" id="example2cols2Input">
+                                                  <input type="text" name="province" class="form-control" id="example2cols2Input" value="{{$contacts[0]['province']}}">
                                                 </div>
                                               </div>
                                           </div>
@@ -87,13 +87,13 @@
                                             <div class="col-md-4">
                                               <div class="form-group">
                                                 <label class="form-control-label" for="example2cols1Input">City / Town</label>
-                                                <input type="text" name="city" class="form-control" id="example2cols1Input">
+                                                <input type="text" name="city" class="form-control" id="example2cols1Input" value="{{$contacts[0]['city']}}">
                                               </div>
                                             </div>
                                             <div class="col-md-4">
                                               <div class="form-group">
                                                 <label class="form-control-label" for="example2cols2Input">Zip Code</label>
-                                                <input type="text" name="zip_code" class="form-control" id="example2cols2Input">
+                                                <input type="text" name="zip_code" class="form-control" id="example2cols2Input" value="{{$contacts[0]['zipcode']}}">
                                               </div>
                                             </div>
                                             {{-- <div class="col-md-4">
@@ -109,37 +109,37 @@
                                             <div class="col-md-2">
                                                 <div class="form-group">
                                                   <label class="form-control-label" for="example2cols1Input">Title</label>
-                                                  <input type="text" name="title" class="form-control" id="example2cols1Input">
+                                                  <input type="text" name="title" class="form-control" id="example2cols1Input" value="{{$contact['person']->title}}">
                                                 </div>
                                               </div>
                                             <div class="col-md-2">
                                               <div class="form-group">
                                                 <label class="form-control-label" for="example2cols1Input">First Name</label>
-                                                <input type="text" name="first_name" class="form-control" id="example2cols1Input">
+                                                <input type="text" name="first_name" class="form-control" id="example2cols1Input" value="{{$contact['person']->firstname}}">
                                               </div>
                                             </div>
                                             <div class="col-md-2">
                                               <div class="form-group">
                                                 <label class="form-control-label" for="example2cols2Input"> Middle Name</label>
-                                                <input type="text" name="middle_name" class="form-control" id="example2cols2Input">
+                                                <input type="text" name="middle_name" class="form-control" id="example2cols2Input" value="{{$contact['person']->middlename}}">
                                               </div>
                                             </div>
                                             <div class="col-md-2">
                                                 <div class="form-group">
                                                   <label class="form-control-label" for="example2cols2Input">Last Name</label>
-                                                  <input type="text" name="last_name" class="form-control" id="example2cols2Input">
+                                                  <input type="text" name="last_name" class="form-control" id="example2cols2Input" value="{{$contact['person']->lastname}}">
                                                 </div>
                                               </div>
                                               <div class="col-md-2">
                                                 <div class="form-group">
                                                   <label class="form-control-label" for="example2cols2Input">Suffix</label>
-                                                  <input type="text" name="suffix" class="form-control" id="example2cols2Input">
+                                                  <input type="text" name="suffix" class="form-control" id="example2cols2Input" value="{{$contact['person']->suffix}}">
                                                 </div>
                                               </div>
                                               <div class="col-md-2">
                                                 <div class="form-group">
                                                   <label class="form-control-label" for="example2cols2Input">Email</label>
-                                                  <input type="text"  name="email_add_person" class="form-control" id="example2cols2Input" placeholder="Separate multiple emails with commas">
+                                                  <input type="text"  name="email_add_person" class="form-control" id="example2cols2Input" value="{{$contact['person']->email}}" placeholder="Separate multiple emails with commas">
                                                 </div>
                                               </div>
                                           </div>
@@ -200,12 +200,12 @@
                                             </div>
                                             <div class="col-md-4">
                                               <div class="form-group">
-                                                  <input type="text" name="tax_1" class="form-control" id="example2cols2Input" maxlength="14" placeholder="XXXXX-XXX-XXXX">
+                                                  <input type="text" name="tax_1" value="{{$contact['tax']->tin_1}}" class="form-control" id="example2cols2Input" maxlength="14" placeholder="XXXXX-XXX-XXXX">
                                               </div>
                                             </div>
                                             <div class="col-md-4">
                                                 <div class="form-group">
-                                                  <input type="text" name="tax_2" class="form-control" id="example2cols2Input" maxlength="5" placeholder="XXXXX">
+                                                  <input type="text" name="tax_2" value="{{$contact['tax']->tin_2}}" class="form-control" id="example2cols2Input" maxlength="5" placeholder="XXXXX">
                                                 </div>
                                               </div>
                                           </div>
@@ -220,7 +220,7 @@
                                             <div class="col-md-3">
                                               <div class="form-group">
                                                 <label class="form-control-label" for="example2cols2Input">Credit Limit Account</label>
-                                                  <input type="number" name="credit_limit" class="form-control" id="example2cols2Input" placeholder="0.00">
+                                                  <input type="number" value="{{$contact['tax']->credit_limit_account}}" name="credit_limit" class="form-control" id="example2cols2Input" placeholder="0.00">
                                               </div>
                                             </div>
                                             <div class="col-md-3">
@@ -253,9 +253,9 @@
                                                 <div class="form-group">
                                                     <button type="submit" class="btn btn-primary text-right">Save</button>
                                                 </div>
-                                                <input type="hidden" name="contact_type" value="customer">
-                                              <input type="hidden" name="company_id" value="{{ $company[0]->id}}">
-                                                <input type="hidden" name="type" value="business">
+                                                {{-- <input type="hidden" name="contact_type" value="customer"> --}}
+                                                <input type="hidden" name="contact_id" value="{{$contact['id']}}">
+                                                {{-- <input type="hidden" name="type" value="business"> --}}
                                               </form>
                                               </div>
                                             </div>

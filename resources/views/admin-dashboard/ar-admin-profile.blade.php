@@ -174,7 +174,7 @@
       {{-- @include('layouts.footer') --}}
     </div>
   </div>
-   @extends('layouts.asset-js')
+   @extends('admin.asset-js')
 </body>
 
 </html>

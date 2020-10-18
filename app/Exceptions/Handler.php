@@ -63,8 +63,8 @@ class Handler extends ExceptionHandler
         if ($this->shouldReport($exception) && !$this->isHttpException($exception) && !config('app.debug')) {
             $exception = new HttpException(500, 'Whoops!');
         }
-        // return parent::render($request, $exception);
-        return response()->view('errors.500',['sentryID' => $this->sentryID,],500);
+        return parent::render($request, $exception);
+        // return response()->view('errors.500',['sentryID' => $this->sentryID,],500);
 
     }
 }

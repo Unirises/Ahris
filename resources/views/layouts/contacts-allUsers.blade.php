@@ -34,71 +34,56 @@ use Illuminate\Support\Facades\Crypt;
               <div class="custom-control custom-checkbox">
                 <script>
 
-                  function contactEdit(){
-                    // this.id ="";
-                    // this.type = "";
-                    this.setEdit = function (id) {
-                      this.id =id;
-                    }
-                    this.getID = function () {
-                      return this.id;
-                    }
-                 
-                  }
-                  // document.getElementById('table-check-all').addEventListener('click',selectAll);
                   document.getElementById('table-check-all').onclick = function() {
                     var checkboxes = document.querySelectorAll('input[name="check_contact"]');
                     for(let checkbox of checkboxes){
                         checkbox.checked = this.checked;
                     }
+
+                    var checkedBoxLength = document.querySelectorAll('input[name="check_contact"]:checked').length;
+                    if(checkedBoxLength === 0 || checkedBoxLength > 1){
+                      var btnEdit = document.getElementById("contact_edit");
+                      btnEdit.classList.remove("text-primary");
+                      btnEdit.classList.add("text-muted");
+                      btnEdit.classList.add("disabled");
+                      btnEdit.style.cursor = null;
+                    }
+
                   };
                   
-                  function selectAll() {
-                    alert(document.querySelectorAll('input[name="check_contact"]:checked').length);
-
-                  }
                 
                  var test = new contactEdit();
-                  function editCheck(id) {
+                  function editCheck() {
                     var checkedBoxLength = document.querySelectorAll('input[name="check_contact"]:checked').length;
                     if(checkedBoxLength === 0){
                       var btnEdit = document.getElementById("contact_edit");
-                      btnEdit.classList.remove("btn");
-                      btnEdit.classList.remove("btn-secondary");
+                      btnEdit.classList.remove("text-primary");
+                      btnEdit.classList.add("text-muted");
+                      btnEdit.classList.add("disabled");
+                      document.getElementById('table-check-all').checked = false;
+                      btnEdit.style.cursor = null;
+                    }
+                   else if(checkedBoxLength > 1){
+                    var btnEdit = document.getElementById("contact_edit");
+                      btnEdit.classList.remove("text-primary");
                       btnEdit.classList.add("text-muted");
                       btnEdit.classList.add("disabled");
                       btnEdit.style.cursor = null;
-                    }
-                    else if (checkedBoxLength > 1) {
-                      var btnEdit = document.getElementById("contact_edit");
-                      btnEdit.classList.remove("btn");
-                      btnEdit.classList.remove("btn-secondary");
-                      btnEdit.classList.add("text-muted");
-                      btnEdit.classList.add("disabled");
-                      btnEdit.style.cursor = null;
-                      // alert("id: "+ id +" type:" +type +"number of box check: " +checkedBoxLength);
-                    }
+                   }
                     else{
                     
                       var btnEdit = document.getElementById("contact_edit");
                       btnEdit.classList.remove("text-muted");
                       btnEdit.classList.remove("disabled");
                       btnEdit.classList.add("text-primary");
-                      // btnEdit.classList.add("btn-secondary");
+              
                       btnEdit.style.cursor = "pointer";
-                      test.setEdit(id);
+              
                     }
      
                   }
 
-                  document.getElementById('contact_edit').onclick = function() {
-                    var checkedBoxLength = document.querySelectorAll('input[name="check_contact"]:checked').length;
-                    if (checkedBoxLength === 1) {
-                 
-                    //  alert(test.getID());
-                      window.location.href = test.getID();
-                    }
-                  } 
+             
               </script>
                 <input class="custom-control-input"  id="table-check-all" type="checkbox">
                 <label class="custom-control-label" for="table-check-all"></label>
@@ -117,9 +102,9 @@ use Illuminate\Support\Facades\Crypt;
             <th>
               <div class="custom-control custom-checkbox">
                 <?php $encryptedContactID = Crypt::encryptString($contact->id);
-                      $url = URL::to('/')."/test/edit/".$encryptedContactID;
+                $url = URL::to('/')."/contacts/edit/".$encryptedContactID;
                 ?>
-                <input class="custom-control-input" name="check_contact" onclick="editCheck('{{$url}}','{{$contact->type}}')" id="table-check-{{$contact->id}}" type="checkbox">
+                <input class="custom-control-input" value="{{$url}}" name="check_contact" onclick="editCheck()" id="table-check-{{$contact->id}}" type="checkbox">
                 <label class="custom-control-label" for="table-check-{{$contact->id}}"></label>
               </div>
             </th>

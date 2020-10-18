@@ -75,9 +75,9 @@
                   <span>Support</span>
                 </a>
                 <div class="dropdown-divider"></div>
-              <a href="/admin/logout" class="dropdown-item">
+              <a href="{{route('admin-logout')}}" class="dropdown-item">
                   <i class="fas fa-sign-out-alt"></i>
-                  <span>Logoutss</span>
+                  <span>Logouts</span>
                 </a>
               </div>
             </li>

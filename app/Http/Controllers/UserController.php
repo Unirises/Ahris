@@ -244,7 +244,16 @@ class UserController extends Controller
     public function insertContacts(Request $req)
     {
         // $user = Auth::user()->id;
-       
+        $rules = [
+            'sales_settings' => 'required',
+            'sales_settings_account'  => 'required',
+            'tax_1'  => 'required',
+            'tax_2'  => 'required',
+            'credit_limit_account'  => 'required',
+            'credit_limit_block'  => 'required',
+        ];
+        $this->validate($req, $rules);
+
         $contacts = new Contacts();
         if (isset($req->firstname) && isset($req->lastname)) {
             $contacts->firstname = $req->input('firstname');
@@ -268,8 +277,7 @@ class UserController extends Controller
         $contacts->city = $req->input('city');
         $contacts->province = $req->input('province');
         $contacts->zipcode = $req->input('zip_code');
-        $contacts->save();
-
+        
         $contact_person_address = array(
             'contact_id' => $contacts->id,
              'title' =>  $req->input('title'),
@@ -279,7 +287,7 @@ class UserController extends Controller
              'suffix' =>  $req->input('suffix'),
              'email' =>  $req->input('email_add_person')
         );
-        DB::table('contact_person_address')->insert($contact_person_address);
+   
         $contact_tax_details = array(
             'contact_id' => $contacts->id,
             'sales_settings' => $req->input('sales_settings'),
@@ -289,7 +297,9 @@ class UserController extends Controller
             'credit_limit_account' => $req->input('credit_limit'),
             'credit_limit_block' =>  $req->input('credit_block')
         );
-
+      
+        $contacts->save();
+        DB::table('contact_person_address')->insert($contact_person_address);
         DB::table('contact_tax_details')->insert($contact_tax_details);
         // DB::table('contact_tax_details')->insert($contact_tax_details);
         return redirect('/contacts');

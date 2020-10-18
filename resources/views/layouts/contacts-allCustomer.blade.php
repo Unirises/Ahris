@@ -1,9 +1,25 @@
+<?php 
+use Illuminate\Support\Facades\Crypt;
+
+?>
 <div class="card">
     <!-- Card header -->
     <div class="card-header">
       <div class="row">
         <div class="col-sm-3 pt-3">
             <span class="text-muted disabled" id="contact_edit_customer">  Edit </span>
+<script>
+
+            document.getElementById('contact_edit_customer').onclick = function() {
+                    var checkedBoxLength = document.querySelectorAll('input[name="check_contact_customer"]:checked').length;
+                    if (checkedBoxLength === 1) {
+                      var checkedBox = document.querySelector('input[name="check_contact_customer"]:checked').value;
+                      window.location.href = checkedBox;
+                    }
+                  } 
+</script>
+           
+
           </div>
         <div class="col-sm-3 pt-3">
         <span>Customers: <span class="text-muted"> {{$contact_count['customer_count']}}</span>
@@ -39,79 +55,48 @@
         </thead>
         <tbody>
           <script>
-
-            function contactEdit(){
-              // this.id ="";
-              // this.type = "";
-              this.setEdit = function (id) {
-                this.id =id;
-              }
-              this.getID = function () {
-                return this.id;
-              }
-           
-            }
-            // document.getElementById('table-check-all').addEventListener('click',selectAll);
-            document.getElementById('table-check-all-customer').onclick = function() {
-              var checkboxes1 = document.querySelectorAll('input[name="check_contact_customer"]');
-              for(let checkbox of checkboxes1){
-                  checkbox.checked = this.checked;
-              }
-            };
-            
-            function selectAll() {
-              alert(document.querySelectorAll('input[name="check_contact_customer"]:checked').length);
-
-            }
-          
-           var test = new contactEdit();
-            function editCheck(id) {
+            function editCheckCustomer() {
               var checkedBoxLength = document.querySelectorAll('input[name="check_contact_customer"]:checked').length;
               if(checkedBoxLength === 0){
                 var btnEdit = document.getElementById("contact_edit_customer");
-                btnEdit.classList.remove("btn");
-                btnEdit.classList.remove("btn-secondary");
+                btnEdit.classList.remove("text-primary");
                 btnEdit.classList.add("text-muted");
                 btnEdit.classList.add("disabled");
+                document.getElementById('table-check-all').checked = false;
                 btnEdit.style.cursor = null;
               }
-              else if (checkedBoxLength > 1) {
-                var btnEdit = document.getElementById("contact_edit");
-                btnEdit.classList.remove("btn");
-                btnEdit.classList.remove("btn-secondary");
+              else if(checkedBoxLength > 1){
+                var btnEdit = document.getElementById("contact_edit_customer");
+                btnEdit.classList.remove("text-primary");
                 btnEdit.classList.add("text-muted");
                 btnEdit.classList.add("disabled");
                 btnEdit.style.cursor = null;
-                // alert("id: "+ id +" type:" +type +"number of box check: " +checkedBoxLength);
               }
               else{
-              
-                var btnEdit = document.getElementById("contact_edit");
+                var btnEdit = document.getElementById("contact_edit_customer");
                 btnEdit.classList.remove("text-muted");
                 btnEdit.classList.remove("disabled");
                 btnEdit.classList.add("text-primary");
-                // btnEdit.classList.add("btn-secondary");
                 btnEdit.style.cursor = "pointer";
-                test.setEdit(id);
               }
-
             }
-
-            document.getElementById('contact_edit').onclick = function() {
+            document.getElementById('contact_edit_customer').onclick = function() {
               var checkedBoxLength = document.querySelectorAll('input[name="check_contact_customer"]:checked').length;
-              if (checkedBoxLength === 1) {
-           
-              //  alert(test.getID());
-                window.location.href = test.getID();
-              }
+                    if (checkedBoxLength === 1) {
+                      var checkedBox = document.querySelector('input[name="check_contact_customer"]:checked').value;
+                      window.location.href = checkedBox;
+                    }
             } 
         </script>
           @foreach ($contacts as $contact)
           @if ($contact->contact_type == 'customer')
+          <?php $encryptedContactID = Crypt::encryptString($contact->id);
+          $url = URL::to('/')."/contacts/edit/".$encryptedContactID;
+          ?>
           <tr>
             <th>
               <div class="custom-control custom-checkbox">
-                <input class="custom-control-input" name="check_contact_customer" id="table-check-customer-{{$contact->id}}" type="checkbox">
+              <input class="custom-control-input" value="{{$url}}" onclick="editCheckCustomer()" name="check_contact_customer" id="table-check-customer-{{$contact->id}}" type="checkbox">
                 <label class="custom-control-label" for="table-check-customer-{{$contact->id}}"></label>
               </div>
             </th>

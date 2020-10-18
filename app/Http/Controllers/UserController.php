@@ -10,6 +10,7 @@ use App\Company;
 use App\Contacts;
 use App\CurrentCompanyLog;
 use DB;
+use App\TaxRate;
 use Illuminate\Support\Facades\Auth;
 use  App\Http\Controllers\Session;
 use Illuminate\Support\Facades\Crypt;
@@ -322,6 +323,7 @@ class UserController extends Controller
         return redirect(URL::previous()); 
     }
 
+    
     public function userPersonalSettings() {
         return view('dashboard.personal-settings');
     }
@@ -349,9 +351,41 @@ class UserController extends Controller
 
  
     public function userTaxes() {
-        return view('dashboard.taxes');
+        $user_id = Auth::user()->id;
+        $userTaxRate = TaxRate::where('user_id', $user_id)->get();
+        return view('dashboard.taxes')->with('tax_rate',$userTaxRate);
     }
+    public function addTaxRate(Request $req)
+    {
 
+        $rules = [
+            'name' => 'required',
+            'tax_rate'  => 'required',
+        ];
+        $this->validate($req, $rules);
+        $newTaxRate = new TaxRate();
+        $newTaxRate->user_id = Auth::user()->id;
+        $newTaxRate->name = $req->input('name');
+        $newTaxRate->tax_rate = $req->input('tax_rate');
+        $newTaxRate->number_of_accounts_using = 0;
+        $newTaxRate->save();
+        return redirect(route('user-taxes'));
+    }
+    public function deleteTaxRate(Request $req)
+    {
+         $user_id = Auth::user()->id;
+         $data = json_decode($req->id);
+         $result = 0;
+         foreach ($data as $id) {
+            //  $tax_rate = TaxRate::where('id',$id);
+             $tax_rate = TaxRate::find($id);
+             $result = $tax_rate->delete();
+         }
+
+       return $result;
+       
+    }
+    
     public function userSettings() {
         return view('dashboard.settings');
     }

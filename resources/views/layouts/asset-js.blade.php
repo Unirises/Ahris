@@ -66,6 +66,14 @@
                 btnEdit.classList.add("disabled");
                 btnEdit.style.cursor = null;
               }
+              else{
+                var btnEdit = document.getElementById("contact_edit_customer");
+                      btnEdit.classList.remove("text-muted");
+                      btnEdit.classList.remove("disabled");
+                      btnEdit.classList.add("text-primary");
+              
+                      btnEdit.style.cursor = "pointer";
+              }
     });
 
     $('#table-check-all-supplier').click(function(){
@@ -80,6 +88,12 @@
                 btnEdit.classList.add("text-muted");
                 btnEdit.classList.add("disabled");
                 btnEdit.style.cursor = null;
+              } else{
+                var btnEdit = document.getElementById("contact_edit_supplier");
+                      btnEdit.classList.remove("text-muted");
+                      btnEdit.classList.remove("disabled");
+                      btnEdit.classList.add("text-primary");
+                      btnEdit.style.cursor = "pointer";
               }
     });
 
@@ -92,6 +106,11 @@
                     }
                   });
 
-
+                  $('#tax-check').click(function() {
+                    var checkboxes = document.querySelectorAll('input[name="tax_name"]');
+                    for(let checkbox of checkboxes){
+                        checkbox.checked = this.checked;
+                    }
+              });
   });
 </script>

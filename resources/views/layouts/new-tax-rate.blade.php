@@ -9,20 +9,21 @@
           </button>
         </div>
         <div class="modal-body">
-            <form>
+        <form action="{{route('add-tax')}}" method="post">
+              @csrf
                 <div class="form-group">
                     <label class="form-control-label" for="example3cols1Input">Display Name</label>
-                    <input type="text" class="form-control" id="example3cols1Input">
+                    <input type="text" name="name" class="form-control" id="example3cols1Input">
                   </div>
             <div class="form-group">
                 <label class="form-control-label" for="example3cols1Input">Tax Rate %</label>
-                <input type="number" class="form-control" id="example3cols1Input" placeholder="%">
+                <input type="number" name="tax_rate" class="form-control" id="example3cols1Input" placeholder="%">
               </div>
-            </form>
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-youtube" data-dismiss="modal">Close</button>
-          <button type="button" class="btn btn-success">Save changes</button>
+          <button type="submit" class="btn btn-success">Add Tax Rate</button>
+        </form>
         </div>
       </div>
     </div>

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 12, 2020 at 05:26 PM
+-- Generation Time: Oct 18, 2020 at 08:59 PM
 -- Server version: 10.4.14-MariaDB
 -- PHP Version: 7.4.10
 
@@ -50,7 +50,9 @@ INSERT INTO `companies` (`id`, `user_id`, `company_name`, `created_at`, `updated
 (8, 8, 'Isang Company Sample 3', '2020-10-12 07:13:36', '2020-10-12 07:13:36'),
 (9, 11, 'John Doegas Company', '2020-10-12 07:15:46', '2020-10-12 07:15:46'),
 (10, 11, 'John Doegas Company 1', '2020-10-12 07:16:36', '2020-10-12 07:16:36'),
-(12, 12, 'John Doegas Company 3', '2020-10-12 07:25:29', '2020-10-12 07:25:29');
+(12, 12, 'John Doegas Company 3', '2020-10-12 07:25:29', '2020-10-12 07:25:29'),
+(13, 13, 'Sample Company Lang', '2020-10-12 20:59:49', '2020-10-12 20:59:49'),
+(14, 8, 'unirises', '2020-10-12 23:48:34', '2020-10-12 23:48:34');
 
 -- --------------------------------------------------------
 
@@ -87,15 +89,10 @@ CREATE TABLE `contacts` (
 --
 
 INSERT INTO `contacts` (`id`, `company_id`, `company_name`, `firstname`, `lastname`, `email`, `displayname`, `phone_number`, `mobile_number`, `fax`, `other`, `website`, `contact_type`, `type`, `created_at`, `updated_at`, `street`, `barangay`, `city`, `province`, `zipcode`) VALUES
-(3, 1, 'test', NULL, NULL, 'test@gmail.com', 'test', '09123123123', '09123123123', '123', '09123123123', 'test.com', 'customer', 'business', '2020-10-09 23:49:29', '2020-10-09 23:49:29', NULL, NULL, NULL, NULL, NULL),
-(4, 1, NULL, 'Alex Bryan', 'Arellano', 'alexbryanarellano2@gmail.com', 'alex', '09123123123', '09123456789', '321', 'asdf', 'asdf.com', 'customer', 'individual', '2020-10-10 00:13:52', '2020-10-10 00:13:52', NULL, NULL, NULL, NULL, NULL),
-(5, 1, 'asdf', NULL, NULL, 'alexbryanarellano2@gmail.com', 'test 1', '09123123123', '1234', '2134', 'safdasdf', 'wqer.com', 'supplier', 'business', '2020-10-10 01:25:51', '2020-10-10 01:25:51', NULL, NULL, NULL, NULL, NULL),
-(6, 1, 'unirises', NULL, NULL, 'unirisesinc@gmail.com', 'accounting', NULL, '09195951456', NULL, 'qwer', 'www unirises.com', 'customer', 'business', '2020-10-10 01:52:28', '2020-10-10 01:52:28', NULL, NULL, NULL, NULL, NULL),
-(7, 1, NULL, 'sample', 'sample', 'sample@gmail.com', 'sample', '09123123', '12312', '123123', '123123', '123123', 'supplier', 'individual', '2020-10-10 02:43:49', '2020-10-10 02:43:49', NULL, NULL, NULL, NULL, NULL),
-(8, 1, NULL, 'mark', 'lee', 'unirisesinc@gmail.com', 'marklee', '09950257988', '09195951456', NULL, 'mamamo', 'unirises.com', 'customer', 'individual', '2020-10-10 02:52:44', '2020-10-10 02:52:44', NULL, NULL, NULL, NULL, NULL),
-(9, 1, 'unirises', NULL, NULL, 'unirisesinc@gmail.com', 'unirses', '09950257988', '09950257988', NULL, NULL, NULL, 'supplier', 'business', '2020-10-10 03:20:04', '2020-10-10 03:20:04', NULL, NULL, NULL, NULL, NULL),
-(10, 1, NULL, 'admin', 'nerves', 'nervesxvibes0625@gmail.com', 'sample 2', '09123123123', '1234', '234', 'aqwer', 'erqwe.com', 'customer', 'individual', '2020-10-11 22:56:32', '2020-10-11 22:56:32', NULL, NULL, NULL, NULL, NULL),
-(11, 1, 'Test Company', NULL, NULL, 'test@gmail.com', 'testing 2', '09123123123', '09123123123', '123', 'dfqwer', 'qwer.com', 'customer', 'business', '2020-10-11 23:19:50', '2020-10-11 23:19:50', 'KOREA', 'sss', 'SAN MATEO', 'Rehiyon ng Calabarzon', '1850');
+(11, 1, 'Test Company', NULL, NULL, 'test@gmail.com', 'crimple', '09123123123', '09123123123', '123', 'dfqwer', 'qwer.com', 'customer', 'business', '2020-10-11 23:19:50', '2020-10-16 19:33:52', 'KOREA', 'sss', 'SAN MATEO', 'Rehiyon ng Calabarzon', '1850'),
+(13, 1, NULL, 'Filipe', 'Madrid', 'alexbryanarellano2@gmail.com', 'Philipe', '123', '12312', '312', '3123', '123', 'supplier', 'individual', '2020-10-16 01:46:39', '2020-10-16 19:33:30', 'KOREA', 's', 'SAN MATEO', 'Rehiyon ng Calabarzon', '1850'),
+(15, 1, NULL, 'admin', 'nerves', 'alexbryanarellano2@gmail.com', 'test', '09123123123', '12312', '312', '3123', '123', 'customer', 'individual', '2020-10-16 20:32:41', '2020-10-17 22:47:31', 'KOREA', 'asdf', 'SAN MATEO', 'Rehiyon ng Calabarzon', '1850'),
+(16, 1, 'Sample Company Lang', NULL, NULL, 'alexbryanarellano2@gmail.com', 'asd', '09123123123', '12312', '312', 'KOREA', '123', 'customer', 'business', '2020-10-17 01:34:30', '2020-10-17 22:47:48', 'KOREA', 's', 'SAN MATEO', 'RIZAL', '1850');
 
 -- --------------------------------------------------------
 
@@ -121,7 +118,10 @@ CREATE TABLE `contact_person_address` (
 --
 
 INSERT INTO `contact_person_address` (`id`, `contact_id`, `title`, `firstname`, `middlename`, `lastname`, `suffix`, `email`, `created_at`, `updated_at`) VALUES
-(1, 11, 'i', 'admin', NULL, 'nerves', NULL, 'admin@admin.com', NULL, NULL);
+(1, 11, 'i', 'admin', 'a', 'nerves', NULL, 'admin@admin.com', NULL, NULL),
+(3, 13, 'test', 'alex', 'asd', 'nerves', 'a', NULL, NULL, NULL),
+(5, 15, 'asd', 'asdf', 'sadf', 'asdf', 'asdf', 'asdf', NULL, NULL),
+(6, 16, 'test', 'admin', 'asd', 'nerves', 'a', 'asdf', NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -147,7 +147,10 @@ CREATE TABLE `contact_tax_details` (
 --
 
 INSERT INTO `contact_tax_details` (`id`, `contact_id`, `sales_settings`, `sales_settings_account`, `tin_1`, `tin_2`, `credit_limit_account`, `credit_limit_block`, `created_at`, `updated_at`) VALUES
-(1, 11, 'Tax Inclusive', 'Sample Account', '12332-321-1233', '23212', '232', '1', NULL, NULL);
+(1, 11, '(None)', 'Default Account', '12332-321-1233', '23212', '232', 'Do not block sending invoices past credit limit', NULL, NULL),
+(2, 13, '(None)', 'Default Account', '123', '123', '123', 'Do not block sending invoices past credit limit', NULL, NULL),
+(3, 15, '(None)', 'Default Account', '123', '123', '57', 'Do not block sending invoices past credit limit', NULL, NULL),
+(4, 16, '(None)', 'Default Account', '123', '123', '21', 'Do not block sending invoices past credit limit', NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -168,10 +171,11 @@ CREATE TABLE `current_company_logs` (
 --
 
 INSERT INTO `current_company_logs` (`id`, `user_id`, `company_id`, `created_at`, `updated_at`) VALUES
-(1, 8, 8, '2020-10-12 02:34:30', '2020-10-12 07:13:36'),
-(2, 7, 5, '2020-10-12 07:04:58', '2020-10-12 07:08:19'),
+(1, 8, 2, '2020-10-12 02:34:30', '2020-10-18 10:38:50'),
+(2, 7, 6, '2020-10-12 07:04:58', '2020-10-13 22:10:47'),
 (3, 11, 9, '2020-10-12 07:15:46', '2020-10-12 07:16:40'),
-(5, 12, 12, '2020-10-12 07:25:29', '2020-10-12 07:25:29');
+(5, 12, 12, '2020-10-12 07:25:29', '2020-10-12 07:25:29'),
+(6, 13, 13, '2020-10-12 20:59:49', '2020-10-12 20:59:49');
 
 -- --------------------------------------------------------
 
@@ -215,7 +219,10 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 (7, '2020_10_10_054120_create_contacts_table', 5),
 (8, '2020_10_12_062658_add_address_to_contacts', 6),
 (9, '2020_10_12_072405_create_current_company_logs_table', 7),
-(10, '2020_10_12_072703_add_details_to_current_company_logs', 8);
+(10, '2020_10_12_072703_add_details_to_current_company_logs', 8),
+(11, '2020_10_18_162942_create_tax_rates_table', 9),
+(12, '2020_10_18_165818_add_user_id_to_tax_rates_table', 10),
+(13, '2020_10_18_165942_add_user_id_to_tax_rates_table', 11);
 
 -- --------------------------------------------------------
 
@@ -365,7 +372,24 @@ INSERT INTO `role_user` (`role_id`, `user_id`, `user_type`) VALUES
 (3, 9, 'App\\User'),
 (3, 10, 'App\\User'),
 (3, 11, 'App\\User'),
-(3, 12, 'App\\User');
+(3, 12, 'App\\User'),
+(3, 13, 'App\\User');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tax_rates`
+--
+
+CREATE TABLE `tax_rates` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `tax_rate` double(8,2) NOT NULL,
+  `number_of_accounts_using` int(11) NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  `user_id` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
 
@@ -402,14 +426,15 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `email`, `email_verified_at`, `password`, `remember_token`, `created_at`, `updated_at`, `firstname`, `lastname`, `phonenumber`, `birthday`, `username`, `facebook`, `linkedin`, `twitter`, `address`, `city`, `province`, `zip_code`, `about_me`, `job_title`) VALUES
-(1, 'superadministrator@app.com', NULL, '$2y$10$Zed8hfaLbLzzAiLa73L3B.DOr8VXzdfS0qE1HsqNUJFfzQE5SECf.', 'VnZgGqkm3ZqzTd0rYUEsatqvTRF6B47MbfRwDCvtRRXBUU2g054E15bmv9yw', '2020-10-07 01:08:38', '2020-10-07 01:08:38', 'super', 'admin', '09123456789', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(1, 'superadministrator@app.com', NULL, '$2y$10$Zed8hfaLbLzzAiLa73L3B.DOr8VXzdfS0qE1HsqNUJFfzQE5SECf.', 'ffHxML0Ib5avb3JEhyA0OLlaIe0YqYBqflqbCX1KsSig4DXcu7XFhAKGSGLD', '2020-10-07 01:08:38', '2020-10-07 01:08:38', 'super', 'admin', '09123456789', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
 (2, 'administrator@app.com', NULL, '$2y$10$0hldZEROXs45FV7flXfZs.w7QmQnrCVWiX063yyjmHX40zsGlrJF6', NULL, '2020-10-07 01:08:39', '2020-10-07 01:08:39', 'basic', 'admin', '09123456789', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(7, 'alexbryanarellano2@gmail.com', '2020-10-07 02:40:38', '$2y$10$wo8bZ10HXKHzSXWzUp4KzueRyAVk8JC3Gx0aDfOlp5Mjo1P/N/i1i', 'zs9t48G4BT8yIZryeIP57riVvTlm6wcgX7fvsGDm0rHSCGVLqTzLHXuiLewo', '2020-10-07 02:36:18', '2020-10-12 03:26:59', 'Alex', 'Arellano', '09123456789', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(8, 'alexbryanarellano2898@gmail.com', '2020-10-07 06:03:05', '$2y$10$12eDT/WtWelYfn1sEvJdiubJj61XD19DiJzM3r7eby81v9wCGDghy', 'obuLQgfRaSxt71lHikxQEAA8EhnKlstpWBwbHNkWlol0ibaLbkBt2iIe6uLd', '2020-10-07 05:25:25', '2020-10-08 22:24:20', 'Alex Bryan', 'Arellano', '09474576403', '1998-11-09', 'alxbry05', 'alxbry', 'burnek', 'lilipad', 'KOREA', 'SAN MATEO', 'Rehiyon ng Calabarzon', '1850', 'ano ang tulog?', 'Programmer'),
+(7, 'alexbryanarellano2@gmail.com', '2020-10-07 02:40:38', '$2y$10$wo8bZ10HXKHzSXWzUp4KzueRyAVk8JC3Gx0aDfOlp5Mjo1P/N/i1i', 'WTEpdqpfdUBGDIBMn36RUESybFYH508Ggiac0MSkzrG9hg0IkhmiC4NMYhLl', '2020-10-07 02:36:18', '2020-10-12 03:26:59', 'Alex', 'Arellano', '09123456789', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(8, 'alexbryanarellano2898@gmail.com', '2020-10-07 06:03:05', '$2y$10$12eDT/WtWelYfn1sEvJdiubJj61XD19DiJzM3r7eby81v9wCGDghy', '5NuPZdiUzHGdXL7tVGsvHzBBpztdlzwnEsvARHuxMiZsQoG2yR92VgUJpmm7', '2020-10-07 05:25:25', '2020-10-08 22:24:20', 'Alex Bryan', 'Arellano', '09474576403', '1998-11-09', 'alxbry05', 'alxbry', 'burnek', 'lilipad', 'KOREA', 'SAN MATEO', 'Rehiyon ng Calabarzon', '1850', 'ano ang tulog?', 'Programmer'),
 (9, 'seregoj478@zuperholo.com', '2020-10-07 08:54:43', '$2y$10$weZY//AKcSJbyv8P8s2pM.l6JD/QSokD7B3ic56nSd1DafObZ2t5a', 'wLYhVk6PyYPIThqFtSg8EvMkN2kdWI1HkOljpMkw8ChgvD6qs4lKusc0faxx', '2020-10-07 08:54:05', '2020-10-07 09:10:20', 'juan', 'dela cruz', '09234343223', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
 (10, 'siseve4079@dmeproject.com', '2020-10-10 01:31:57', '$2y$10$dxnXfCY5ioMX1BrmwcFLRuc7xBcHHuzGBtb9gtEf/UVOuuPOp8.u.', NULL, '2020-10-10 01:31:42', '2020-10-10 01:31:57', 'admin', 'nerves', '09474576403', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
 (11, 'wacal82333@zik2zik.com', '2020-10-12 07:15:08', '$2y$10$GGEqpgZNyU34JJDJMRFpQ.uVnDlph2iRUfk0OW04mPeSFQbLBsJCu', NULL, '2020-10-12 07:14:41', '2020-10-12 07:15:08', 'John', 'Doela Cruz', '09123456987', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(12, 'baxop20543@pastortips.com', '2020-10-12 07:18:04', '$2y$10$eRm6MlX9KZ5lo/um/4/Tw.XufPmF4rgQz6ipFPVHtZX27sPA/dGya', NULL, '2020-10-12 07:17:46', '2020-10-12 07:18:04', 'Mike', 'Coxmall', '09123456987', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
+(12, 'baxop20543@pastortips.com', '2020-10-12 07:18:04', '$2y$10$eRm6MlX9KZ5lo/um/4/Tw.XufPmF4rgQz6ipFPVHtZX27sPA/dGya', NULL, '2020-10-12 07:17:46', '2020-10-12 07:18:04', 'Mike', 'Coxmall', '09123456987', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(13, 'loyejo8142@dmeproject.com', '2020-10-12 20:49:16', '$2y$10$UOF4.incRAVLC8Q1Py7Tpu5/v6g6lF6tfu7HEG8OmdYGCPLnTjqea', NULL, '2020-10-12 20:48:54', '2020-10-12 20:49:16', 'admin', 'nerves', '09123456987', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
 
 --
 -- Indexes for dumped tables
@@ -500,6 +525,12 @@ ALTER TABLE `role_user`
   ADD KEY `role_user_role_id_foreign` (`role_id`);
 
 --
+-- Indexes for table `tax_rates`
+--
+ALTER TABLE `tax_rates`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `users`
 --
 ALTER TABLE `users`
@@ -514,31 +545,31 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `companies`
 --
 ALTER TABLE `companies`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- AUTO_INCREMENT for table `contacts`
 --
 ALTER TABLE `contacts`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
 
 --
 -- AUTO_INCREMENT for table `contact_person_address`
 --
 ALTER TABLE `contact_person_address`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT for table `contact_tax_details`
 --
 ALTER TABLE `contact_tax_details`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `current_company_logs`
 --
 ALTER TABLE `current_company_logs`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `failed_jobs`
@@ -550,7 +581,7 @@ ALTER TABLE `failed_jobs`
 -- AUTO_INCREMENT for table `migrations`
 --
 ALTER TABLE `migrations`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- AUTO_INCREMENT for table `permissions`
@@ -565,10 +596,16 @@ ALTER TABLE `roles`
   MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
+-- AUTO_INCREMENT for table `tax_rates`
+--
+ALTER TABLE `tax_rates`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+
+--
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- Constraints for dumped tables

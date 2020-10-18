@@ -62,6 +62,8 @@ Route::post('/user/update/profile', 'UserController@update')->name('user-profile
 Route::post('/contacts/insert', 'UserController@insertContacts')->name('user-insert-contacts');
 Route::post('/contacts/update', 'UserController@updateContacts')->name('user-update-contacts');
 Route::post('/user/create/company', 'UserController@createCompany')->name('user-create-company');
+Route::post('/taxes/add/tax-rate', 'UserController@addTaxRate')->name('add-tax');
+Route::post('/taxes/delete/tax-rate', 'UserController@deleteTaxRate')->name('delete-tax');
 
 
 Route::get('/logout', 'UserController@logout')->name('user-logout');

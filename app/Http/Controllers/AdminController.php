@@ -72,7 +72,8 @@ class AdminController extends Controller
 
    //ar-analytics
    public function adminAnalytics() {
-    $analyticsData = Analytics::fetchVisitorsAndPageViews(Period::days(7));
+    // $analyticsData = Analytics::fetchVisitorsAndPageViews(Period::days(7));
+    $analyticsData =  Analytics::fetchMostVisitedPages(Period::days(7));
     //    return view('admin-dashboard.ar-analytics');
     return $analyticsData;
    }

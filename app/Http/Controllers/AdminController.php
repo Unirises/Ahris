@@ -7,6 +7,9 @@ use Illuminate\Http\Request;
 use App\User;
 use DB;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Collection;
+use Analytics;
+use Spatie\Analytics\Period;
 
 class AdminController extends Controller
 {
@@ -69,7 +72,10 @@ class AdminController extends Controller
 
    //ar-analytics
    public function adminAnalytics() {
-       return view('admin-dashboard.ar-analytics');
+    // $analyticsData = Analytics::fetchVisitorsAndPageViews(Period::days(7));
+    $analyticsData =  Analytics::fetchMostVisitedPages(Period::days(7));
+    //    return view('admin-dashboard.ar-analytics');
+    return $analyticsData;
    }
 
    //ar-crashlogs Report

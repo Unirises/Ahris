@@ -10,6 +10,7 @@ use App\Company;
 use App\Contacts;
 use App\CurrentCompanyLog;
 use DB;
+use App\TaxRate;
 use Illuminate\Support\Facades\Auth;
 use  App\Http\Controllers\Session;
 use Illuminate\Support\Facades\Crypt;
@@ -244,7 +245,16 @@ class UserController extends Controller
     public function insertContacts(Request $req)
     {
         // $user = Auth::user()->id;
-       
+        $rules = [
+            'sales_settings' => 'required',
+            'sales_settings_account'  => 'required',
+            'tax_1'  => 'required',
+            'tax_2'  => 'required',
+            'credit_limit_account'  => 'required',
+            'credit_limit_block'  => 'required',
+        ];
+        $this->validate($req, $rules);
+
         $contacts = new Contacts();
         if (isset($req->firstname) && isset($req->lastname)) {
             $contacts->firstname = $req->input('firstname');
@@ -268,8 +278,7 @@ class UserController extends Controller
         $contacts->city = $req->input('city');
         $contacts->province = $req->input('province');
         $contacts->zipcode = $req->input('zip_code');
-        $contacts->save();
-
+        
         $contact_person_address = array(
             'contact_id' => $contacts->id,
              'title' =>  $req->input('title'),
@@ -279,7 +288,7 @@ class UserController extends Controller
              'suffix' =>  $req->input('suffix'),
              'email' =>  $req->input('email_add_person')
         );
-        DB::table('contact_person_address')->insert($contact_person_address);
+   
         $contact_tax_details = array(
             'contact_id' => $contacts->id,
             'sales_settings' => $req->input('sales_settings'),
@@ -289,7 +298,9 @@ class UserController extends Controller
             'credit_limit_account' => $req->input('credit_limit'),
             'credit_limit_block' =>  $req->input('credit_block')
         );
-
+      
+        $contacts->save();
+        DB::table('contact_person_address')->insert($contact_person_address);
         DB::table('contact_tax_details')->insert($contact_tax_details);
         // DB::table('contact_tax_details')->insert($contact_tax_details);
         return redirect('/contacts');
@@ -312,6 +323,7 @@ class UserController extends Controller
         return redirect(URL::previous()); 
     }
 
+    
     public function userPersonalSettings() {
         return view('dashboard.personal-settings');
     }
@@ -339,9 +351,41 @@ class UserController extends Controller
 
  
     public function userTaxes() {
-        return view('dashboard.taxes');
+        $user_id = Auth::user()->id;
+        $userTaxRate = TaxRate::where('user_id', $user_id)->get();
+        return view('dashboard.taxes')->with('tax_rate',$userTaxRate);
     }
+    public function addTaxRate(Request $req)
+    {
 
+        $rules = [
+            'name' => 'required',
+            'tax_rate'  => 'required',
+        ];
+        $this->validate($req, $rules);
+        $newTaxRate = new TaxRate();
+        $newTaxRate->user_id = Auth::user()->id;
+        $newTaxRate->name = $req->input('name');
+        $newTaxRate->tax_rate = $req->input('tax_rate');
+        $newTaxRate->number_of_accounts_using = 0;
+        $newTaxRate->save();
+        return redirect(route('user-taxes'));
+    }
+    public function deleteTaxRate(Request $req)
+    {
+         $user_id = Auth::user()->id;
+         $data = json_decode($req->id);
+         $result = 0;
+         foreach ($data as $id) {
+            //  $tax_rate = TaxRate::where('id',$id);
+             $tax_rate = TaxRate::find($id);
+             $result = $tax_rate->delete();
+         }
+
+       return $result;
+       
+    }
+    
     public function userSettings() {
         return view('dashboard.settings');
     }

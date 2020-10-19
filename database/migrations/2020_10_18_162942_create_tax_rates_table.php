@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateCurrentCompanyLogsTable extends Migration
+class CreateTaxRatesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,11 @@ class CreateCurrentCompanyLogsTable extends Migration
      */
     public function up()
     {
-        Schema::create('current_company_logs', function (Blueprint $table) {
+        Schema::create('tax_rates', function (Blueprint $table) {
             $table->id();
-            $table->integer('user_id')->nullable();
-            $table->integer('company_id')->nullable();
-            // $table->foreign('user_id')->references('id')->on('users');
+            $table->string('name');
+            $table->float('tax_rate');
+            $table->integer('number_of_accounts_using');
             $table->timestamps();
         });
     }
@@ -29,6 +29,6 @@ class CreateCurrentCompanyLogsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('current_company_logs');
+        Schema::dropIfExists('tax_rates');
     }
 }

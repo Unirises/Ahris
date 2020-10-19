@@ -149,7 +149,7 @@
       </div>
     </div>
   </footer>
-    @include('layouts.asset-js')
+  @extends('admin.asset-js')
 
 </body>
 

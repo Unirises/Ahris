@@ -1,10 +1,43 @@
+<?php 
+use Illuminate\Support\Facades\Crypt;
+
+?>
 <div class="card">
     <!-- Card header -->
     <div class="card-header">
       <div class="row">
         <div class="col-sm-3 pt-3">
-            <span class="text-muted"> Edit </span>
+          <span class="text-muted disabled" id="contact_edit_supplier">  Edit </span>
           </div>
+
+          <script>
+            function editCheckSupplier() {
+              var checkedBoxLength = document.querySelectorAll('input[name="check_contact_supplier"]:checked').length;
+              if(checkedBoxLength === 0 || checkedBoxLength > 1){
+                var btnEdit = document.getElementById("contact_edit_supplier");
+                btnEdit.classList.remove("text-primary");
+                btnEdit.classList.add("text-muted");
+                btnEdit.classList.add("disabled");
+                btnEdit.style.cursor = null;
+              }
+              
+              else{
+                var btnEdit = document.getElementById("contact_edit_supplier");
+                btnEdit.classList.remove("text-muted");
+                btnEdit.classList.remove("disabled");
+                btnEdit.classList.add("text-primary");
+                btnEdit.style.cursor = "pointer";
+              }
+            }
+            document.getElementById('contact_edit_supplier').onclick = function() {
+              var checkedBoxLength = document.querySelectorAll('input[name="check_contact_supplier"]:checked').length;
+                    if (checkedBoxLength === 1) {
+                      var checkedBox = document.querySelector('input[name="check_contact_supplier"]:checked').value;
+                      window.location.href = checkedBox;
+                    }
+            } 
+        </script>
+
         <div class="col-sm-3 pt-3">
         <span>Customers: <span class="text-muted"> {{$contact_count['customer_count']}}</span>
           </div>
@@ -40,12 +73,14 @@
 
           @foreach ($contacts as $contact)
           @if ($contact->contact_type == 'supplier')
-              
+          <?php $encryptedContactID = Crypt::encryptString($contact->id);
+          $url = URL::to('/')."/contacts/edit/".$encryptedContactID;
+          ?>
        
           <tr>
             <th>
               <div class="custom-control custom-checkbox">
-                <input class="custom-control-input" id="table-check-supplier-{{$contact->id}}" type="checkbox">
+                <input class="custom-control-input"  value="{{$url}}" onclick="editCheckSupplier()" name="check_contact_supplier"  id="table-check-supplier-{{$contact->id}}" type="checkbox">
                 <label class="custom-control-label" for="table-check-supplier-{{$contact->id}}"></label>
               </div>
             </th>

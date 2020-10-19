@@ -30,7 +30,8 @@
             </li>
 
              <li class="nav-item">
-              <a class="nav-link" href="{{route('admin-analytics')}}">
+              {{-- <a class="nav-link" href="{{route('admin-analytics')}}"> --}}
+              <a class="nav-link" href="https://analytics.google.com/analytics/web/?authuser=4#/report-home/a180702852w249623446p231281420">
                 <i class="ni ni-sound-wave text-info"></i>
                 <span class="nav-link-text">Analytics</span>
               </a>

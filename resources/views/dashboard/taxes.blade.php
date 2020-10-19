@@ -2,6 +2,8 @@
 <html>
 
 <head>
+  <script src="{{asset('assets/vendor/jquery/dist/jquery.min.js')}}"></script>
+  {{-- <script src="{{asset('assets/js/jquery.loading.min.js')}}"></script> --}}
   @extends('layouts.asset-css')
 </head>
 
@@ -13,6 +15,8 @@
     @include('layouts.user-topnav')
 
     <div class="container mt-5 mb-5">
+    
+
         <div class="nav-wrapper">
             <ul class="nav nav-pills nav-fill flex-column flex-md-row" id="tabs-icons-text" role="tablist">
                 <li class="nav-item">
@@ -76,10 +80,12 @@
                                     <th scope="col"></th>
                                   </tr>
                                 </thead>
-                                <tbody class="list"><tr>
+                                <tbody class="list">
+                             
+                                  <tr>
                                     <th scope="row">
                                       <div class="media align-items-center">
-                                        <a href="#" class="mt-1 mr-3">
+                                        <a  class="mt-1 mr-3">
                                             <i class="fa fa-lock"></i>
                                         </a>
                                         <div class="media-body">
@@ -134,7 +140,7 @@
                           </button>
                             </div>
                             <div class="col text-right">
-                            <button class="btn btn-icon btn-youtube mb-3" type="button">
+                            <button class="btn btn-icon btn-youtube mb-3" id="delete-tax" type="button">
                                 <span class="btn-inner--icon"><i class="fa fa-trash"></i></span>
                                 <span class="btn-inner--text">Delete</span>
                               </button>
@@ -142,22 +148,55 @@
                         </div>
                         <div class="card">
                             <!-- Light table -->
-                            <div class="table-responsive" data-toggle="list">
+                            <div class="table-responsive">
                               <table class="table align-items-center table-flush">
                                 <thead class="thead-light">
                                   <tr>
+                                    <th>
+                                      <div class="custom-control custom-checkbox">
+                                        <script>
+                                          $('#delete-tax').click(function () {
+                                          
+                                           var checkboxes = document.querySelectorAll('input[name="tax_name"]:checked');
+                                           const arrayCheck = [];
+                                              for(let checkbox of checkboxes){
+                                                arrayCheck.push(checkbox.value);
+                                              }
+                                            
+                                              var dataString = JSON.stringify(arrayCheck);
+                                              // alert();
+                                              $.post("{{route('delete-tax')}}",{ 
+                                                id: dataString,
+                                                _token: "{{csrf_token()}}",
+                                            }, function(res) {
+                                                if (res) {
+                                                  window.location.href= '{{URL::previous()}}';
+                                                }
+                                              });
+                                              // alert(arrayCheck);
+                                          });
+                                        </script>
+                                        <input class="custom-control-input" id="tax-check" type="checkbox">
+                                        <label class="custom-control-label" for="tax-check"></label>
+                                      </div>
+                                    </th>
                                     <th scope="col" class="sort" data-sort="name">Name</th>
                                     <th scope="col" class="sort" data-sort="tax-rate">Tax Rate</th>
-                                    <th scope="col" class="sort" data-sort="accounts">Accounts using Tax Rate</th>
+                                    <th scope="col" class="sort">Accounts using Tax Rate</th>
                                     <th scope="col"></th>
                                   </tr>
                                 </thead>
-                                <tbody class="list"><tr>
+                                <tbody class="list">
+                            
+                                  <tr>
+                                    <th>
+                                      <a  class="mt-1 mr-3">
+                                        <i class="fa fa-lock"></i>
+                                    </a>
+                                    </th>
                                     <th scope="row">
                                       <div class="media align-items-center">
-                                        <a href="#" class="mt-1 mr-3">
-                                            <i class="fa fa-lock"></i>
-                                        </a>
+                        
                                         <div class="media-body">
                                           <span class="name mb-0 text-sm">Joshua Alcantara</span>
                                         </div>
@@ -170,6 +209,40 @@
                                         0
                                       </td>
                                   </tr>
+                                  @foreach ($tax_rate as $tax)
+                                  <tr>
+
+                                    <th>
+                                      @if ($tax->number_of_accounts_using == 0)
+                                      <div class="custom-control custom-checkbox">
+                                        <input class="custom-control-input" name="tax_name" value="{{$tax->id}}" id="table-check-{{$tax->id}}" type="checkbox">
+                                          <label class="custom-control-label" for="table-check-{{$tax->id}}"></label>
+                                        </div>
+                                
+                                      @else
+                                      <a href="#" class="mt-1 mr-3">
+
+                                        <i class="fa fa-lock"></i>
+                                    </a>
+                                      @endif
+                                    </th>
+                                    <th scope="row">
+                                      <div class="media align-items-center">
+                                     
+                                        <div class="media-body">
+                                          
+                                        <span class="name mb-0 text-sm">{{$tax->name}}</span>
+                                        </div>
+                                      </div>
+                                    </th>
+                                    <td class="tax-rate">
+                                      {{$tax->tax_rate}}%
+                                    </td>
+                                    <td class="accounts">
+                                      {{$tax->number_of_accounts_using}}
+                                      </td>
+                                  </tr>
+                                  @endforeach
                                 </tbody>
                               </table>
                             </div>

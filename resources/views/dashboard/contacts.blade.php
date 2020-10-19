@@ -15,8 +15,17 @@
 
     <div class="container mt-5 mb-5">
 
-      Company: {{ $company[0]->company_name}}
-
+      {{-- Company: {{ $company[0]->company_name}} --}}
+      @if (count($errors) > 0)
+      <div class = "alert alert-danger">
+         <ul>
+             <li>Some required field not filled</li>
+            {{-- @foreach ($errors->all() as $error)
+               <li></li>
+            @endforeach --}}
+         </ul>
+      </div>
+   @endif
         <div class="nav-wrapper">
             <ul class="nav nav-pills nav-fill flex-column flex-md-row" id="tabs-icons-text" role="tablist">
                 <li class="nav-item">
@@ -30,20 +39,23 @@
                 </li>
             </ul>
         </div>
+  
                 <div class="tab-content" id="myTabContent">
                     <div class="tab-pane fade show active" id="tabs-icons-text-1" role="tabpanel" aria-labelledby="tabs-icons-text-1-tab">
-                        <button type="button" class="btn btn-success mb-3" data-toggle="modal" data-target="#accountAddBusinessCustomer">Add Contacts</button>
+                        <button type="button" class="btn btn-success mb-3" data-toggle="modal" data-target="#addContacts">Add Contacts</button>
                         <a href="{{route('test-export')}}" class="btn btn-secondary mb-3">Export</a>
+                  
                         @include('layouts.contacts-allUsers')
+
                     </div>
 
                     {{-- Customers Tab Card --}}
                     <div class="tab-pane fade" id="tabs-icons-text-2" role="tabpanel" aria-labelledby="tabs-icons-text-2-tab">
                         <div class="row">
                             <div class="col-md-12">
-                                @include('layouts.account-addCustomer-Business')
-                                @include('layouts.account-addCustomer-Individual')
-                                <button type="button" class="btn btn-primary mb-3" data-toggle="modal" data-target="#accountAddBusinessCustomer">Add Business Customer</button>
+                                {{-- @include('layouts.account-addCustomer-Business')
+                                @include('layouts.account-addCustomer-Individual')--}}
+                                <button type="button" class="btn btn-primary mb-3" data-toggle="modal" data-target="#accountAddBusinessCustomer">Add Business Customer</button> 
                                 <button type="button" class="btn btn-default mb-3" data-toggle="modal" data-target="#accountAddIndividualCustomer">Add Individual Customer</button>
                                 <a href="{{route('test-export-customer')}}" class="btn btn-secondary mb-3">Export</a>
                                 @include('layouts.contacts-allCustomer')
@@ -55,8 +67,8 @@
                     <div class="tab-pane fade" id="tabs-icons-text-3" role="tabpanel" aria-labelledby="tabs-icons-text-3-tab">
                         <div class="row">
                             <div class="col-md-12">
-                                @include('layouts.account-addSupplier-Business')
-                                @include('layouts.account-addSupplier-Individual')
+                                {{-- @include('layouts.account-addSupplier-Business')
+                                @include('layouts.account-addSupplier-Individual') --}}
                                 <button type="button" class="btn btn-primary mb-3" data-toggle="modal" data-target="#accountAddBusinessSupplier">Add Business Supplier</button>
                                 <button type="button" class="btn btn-default mb-3" data-toggle="modal" data-target="#accountAddIndividualSupplier">Add Individual Supplier</button>
                                 <a href="{{route('test-export-supplier')}}" class="btn btn-secondary mb-3">Export</a>
@@ -66,6 +78,11 @@
                           </div>
                     </div>
                 </div>
+                @include('layouts.add-contact')
+                @include('layouts.account-addSupplier-Business')
+                @include('layouts.account-addSupplier-Individual')
+                @include('layouts.account-addCustomer-Business')
+                @include('layouts.account-addCustomer-Individual')
         </div>
     </div>
 

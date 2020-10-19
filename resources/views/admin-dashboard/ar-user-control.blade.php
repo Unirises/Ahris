@@ -11,8 +11,6 @@
   <div class="main-content" id="panel">
     @include('layouts.topnav')
     <!-- Header -->
-    <!-- Header -->
-
     <!-- Page content -->
     <div class="container-fluid mt-4">
       <h1 class="mb-3"> User Control  </h1>

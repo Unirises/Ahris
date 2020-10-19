@@ -16,7 +16,7 @@
                   </div>
             <div class="form-group">
                 <label class="form-control-label" for="example3cols1Input">Tax Rate %</label>
-                <input type="number" class="form-control" id="example3cols1Input" placeholder="%">
+                <input type="text" class="form-control" id="example3cols1Input" placeholder="%">
               </div>
             </form>
         </div>

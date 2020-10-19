@@ -17,15 +17,18 @@
                             <div class="col-md-12 mb-3">
                               <h1 class="mb-2">Chart of Accounts</h1>
                             </div>
+                            @include('modals.add-account')
                             <div class="col-md-12 mb-3">
-                                <button class="btn btn-icon btn-primary" data-toggle="modal" data-target="#exampleModal" type="button">
+                                <button class="btn btn-icon btn-primary" data-toggle="modal" data-target="#addAccountModal" type="button">
                                     <span class="btn-inner--icon"><i class="fa fa-plus-square"></i></span>
                                     <span class="btn-inner--text">Add Account</span>
                                   </button>
+                       
                                   <button class="btn btn-icon btn-primary" data-toggle="modal" data-target="#exampleModal" type="button">
                                     <span class="btn-inner--icon"><i class="fa fa-file-pdf"></i></span>
                                     <span class="btn-inner--text">Print PDF</span>
                                   </button>
+
                                   <button class="btn btn-icon btn-outline-primary" data-toggle="modal" data-target="#exampleModal" type="button">
                                     <span class="btn-inner--icon"><i class="fa fa-plus-square"></i></span>
                                     <span class="btn-inner--text">Export</span>
@@ -74,28 +77,34 @@
                                                 <th scope="col"></th>
                                               </tr>
                                             </thead>
-                                            <tbody class="list"><tr>
+
+                                            <tbody class="list">
+                                       
+                                              @foreach ($accounts as $account)
+        
+                                              <tr>
                                                 <th>
                                                     <div class="custom-control custom-checkbox">
                                                       <input class="custom-control-input" id="table-check-all" type="checkbox">
-                                                      <label class="custom-control-label" for="table-check-all">001001</label>
+                                                    <label class="custom-control-label" for="table-check-all">{{$account->code}}</label>
 
                                                     </div>
                                                   </th>
                                                 <th scope="row">
                                                   <div class="media align-items-center">
-                                                    <a href="#" class="mt-1 mr-3">
-                                                        <i class="fa fa-lock"></i>
-                                                    </a>
+                                                 
                                                     <div class="media-body">
-                                                      <span class="name mb-0 text-sm">Joshua Alcantara</span>
+                                                      <span class="name mb-0 text-sm">{{$account->name}}</span>
                                                     </div>
                                                   </div>
                                                 </th>
                                                 <td class="budget">
-
+                                                  {{$account->type}}
                                                 </td>
+                                                <td>{{$account->tax}}</td>
+                                                
                                               </tr>
+                                              @endforeach
                                             </tbody>
                                           </table>
                                         </div>

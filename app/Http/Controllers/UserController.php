@@ -9,6 +9,7 @@ use App\User;
 use App\Company;
 use App\Contacts;
 use App\CurrentCompanyLog;
+use App\Accounts;
 use DB;
 use App\TaxRate;
 use Illuminate\Support\Facades\Auth;
@@ -342,8 +343,54 @@ class UserController extends Controller
     }
 
     public function userAccounting() {
-        return view('dashboard.accounting');
+        $user_id = Auth::user()->id;
+        $tax_rates = TaxRate::where('user_id',$user_id)->orderBy('tax_rate', 'desc')->get();
+        $accounts = Accounts::where('user_id',$user_id)->orderBy('id', 'desc')->get();
+        return view('dashboard.accounting')->with('tax_rates',$tax_rates)->with('accounts',$accounts);
     }
+    public function addAccount(Request $req) {
+
+        $rules = [
+            'account_type' => 'required',
+            'code'  => 'required|numeric',
+            'name'  => 'required',
+            'description'  => 'required',
+            'tax'  => 'required',
+        ];
+        $this->validate($req, $rules);
+
+        $tax = explode(',', $req->input('tax'));
+        $newAccount = new Accounts();
+        $newAccount->code = $req->input('code');
+        $newAccount->name = $req->input('name');
+        $newAccount->description = $req->input('description');
+        $newAccount->type = $req->input('account_type');
+        $newAccount->tax_id = $tax[0];
+        $newAccount->tax = $tax[1];
+        $newAccount->user_id = Auth::user()->id;
+        $checkAccount = Accounts::where('code', $newAccount->code)->where('user_id',Auth::user()->id)->get()->toArray();
+        $checkInsert = 0;
+        if (!$checkAccount) {
+            $checkInsert = $newAccount->save();
+        }
+        else{
+            // $v = Validator::make([], []);
+            // $v->errors()->add('code_unique', 'Code is exists in the database');
+            return redirect(route('user-accounting'));
+            // return "same";
+        }
+
+        $tax_rate = TaxRate::find($tax[0]);
+        $tax_rate->number_of_accounts_using+=1;
+        $tax_rate->save();
+   
+        if ( $checkInsert ) {
+            return redirect(route('user-accounting'));
+        }
+          
+    }
+
+    
 
     public function userReports() {
         return view('dashboard.reports');
@@ -360,7 +407,7 @@ class UserController extends Controller
 
         $rules = [
             'name' => 'required',
-            'tax_rate'  => 'required',
+            'tax_rate'  => 'required|numeric',
         ];
         $this->validate($req, $rules);
         $newTaxRate = new TaxRate();

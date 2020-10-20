@@ -63,6 +63,7 @@ Route::post('/contacts/insert', 'UserController@insertContacts')->name('user-ins
 Route::post('/contacts/update', 'UserController@updateContacts')->name('user-update-contacts');
 Route::post('/user/create/company', 'UserController@createCompany')->name('user-create-company');
 Route::post('/taxes/add/tax-rate', 'UserController@addTaxRate')->name('add-tax');
+Route::post('/accounting/add/account', 'UserController@addAccount')->name('add-account');
 Route::post('/taxes/delete/tax-rate', 'UserController@deleteTaxRate')->name('delete-tax');
 
 

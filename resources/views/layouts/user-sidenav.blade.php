@@ -44,7 +44,7 @@
             </li>
 
              <li class="nav-item">
-              <a class="nav-link" href="accounting">
+             <a class="nav-link" href="{{route('user-accounting')}}">
                 <i class="ni ni-chart-bar-32 text-success"></i>
                 <span class="nav-link-text">Accounting</span>
               </a>

@@ -134,7 +134,7 @@
                         <div class="row">
                             @include('layouts.new-tax-rate')
                             <div class="col">
-                        <button class="btn btn-icon btn-primary mb-3"data-toggle="modal" data-target="#exampleModal" type="button">
+                        <button class="btn btn-icon btn-primary mb-3"data-toggle="modal" data-target="#taxRateModal" type="button">
                             <span class="btn-inner--icon"><i class="fa fa-plus-square"></i></span>
                             <span class="btn-inner--text">New Tax Rate</span>
                           </button>
@@ -188,7 +188,7 @@
                                 </thead>
                                 <tbody class="list">
                             
-                                  <tr>
+                                  {{-- <tr>
                                     <th>
                                       <a  class="mt-1 mr-3">
                                         <i class="fa fa-lock"></i>
@@ -208,7 +208,7 @@
                                     <td class="accounts">
                                         0
                                       </td>
-                                  </tr>
+                                  </tr> --}}
                                   @foreach ($tax_rate as $tax)
                                   <tr>
 

@@ -1,5 +1,5 @@
 <!-- Modal -->
-<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="taxRateModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" role="document">
       <div class="modal-content">
         <div class="modal-header">
@@ -17,7 +17,7 @@
                   </div>
             <div class="form-group">
                 <label class="form-control-label" for="example3cols1Input">Tax Rate %</label>
-                <input type="number" name="tax_rate" class="form-control" id="example3cols1Input" placeholder="%">
+                <input type="text" name="tax_rate" class="form-control" id="example3cols1Input" placeholder="%">
               </div>
         </div>
         <div class="modal-footer">

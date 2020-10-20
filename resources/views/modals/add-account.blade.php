@@ -9,13 +9,13 @@
           </button>
         </div>
 
-        <style>
+        {{-- <style>
            #accountType select option[disabled] {
                 color: rgb(250, 33, 33);
                 font-weight: bold;
                 background-color:#00F;
         }
-        </style>
+        </style> --}}
         <div class="modal-body">
         <form action="{{route('add-account')}}" method="post">
 

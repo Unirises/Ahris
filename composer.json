@@ -20,7 +20,7 @@
         "laravel/framework": "^7.0",
         "laravel/tinker": "^2.0",
         "laravel/ui": "2.4",
-        "maatwebsite/excel": "^3.1",
+        "maatwebsite/excel": "3.0.1",
         "phpoffice/phpspreadsheet": "^1.15",
         "pusher/pusher-php-server": "^4.1",
         "rinvex/laravel-subscriptions": "^3.0",

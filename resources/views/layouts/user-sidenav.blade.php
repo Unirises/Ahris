@@ -30,14 +30,14 @@
             </li>
 
              <li class="nav-item">
-              <a class="nav-link" href="sales">
+             <a class="nav-link" href="{{route('user-sales')}}">
                 <i class="ni ni-sound-wave text-info"></i>
                 <span class="nav-link-text">Sales</span>
               </a>
             </li>
 
              <li class="nav-item">
-              <a class="nav-link" href="purchases">
+             <a class="nav-link" href="{{route('user-purchases')}}">
                 <i class="ni ni-app text-blue"></i>
                 <span class="nav-link-text">Purchases</span>
               </a>
@@ -51,7 +51,7 @@
             </li>
 
              <li class="nav-item">
-              <a class="nav-link" href="reports">
+             <a class="nav-link" href="{{route('user-reporting')}}">
                 <i class="ni ni-circle-08 text-default"></i>
                 <span class="nav-link-text">Reports</span>
               </a>
@@ -65,7 +65,7 @@
             </li>
 
             <li class="nav-item">
-              <a class="nav-link" href="taxes">
+            <a class="nav-link" href="{{route('user-taxes')}}">
                 <i class="ni ni-money-coins text-warning"></i>
                 <span class="nav-link-text">Taxes</span>
               </a>
@@ -73,7 +73,7 @@
 
 
              <li class="nav-item">
-              <a class="nav-link" href="settings">
+             <a class="nav-link" href="{{route('user-settings')}}">
                 <i class="ni ni-settings-gear-65 text-red"></i>
                 <span class="nav-link-text">Settings</span>
               </a>

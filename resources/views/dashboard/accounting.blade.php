@@ -33,7 +33,19 @@
                                     <span class="btn-inner--icon"><i class="fa fa-plus-square"></i></span>
                                     <span class="btn-inner--text">Export</span>
                                   </button>
+
+                                  
                             </div>
+                            <div class="col text-right">
+                              <button class="btn btn-icon btn-youtube mb-3" id="delete-aaccount" type="button">
+                                  <span class="btn-inner--icon"><i class="fa fa-trash"></i></span>
+                                  <span class="btn-inner--text">Delete</span>
+                                </button>
+                              <button class="btn btn-icon btn-youtube mb-3" id="delete-aaccount" type="button">
+                                  <span class="btn-inner--icon"><i class="fa fa-trash"></i></span>
+                                  <span class="btn-inner--text">Delete</span>
+                                </button>
+                              </div>
                         </div>
 
                         <div class="ct-example mb-5">

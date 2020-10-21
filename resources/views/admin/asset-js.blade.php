@@ -8,3 +8,6 @@
   <!-- Argon JS -->
   <script src="{{asset('assets/js/argon.js?v=1.1.0')}}"></script>
   <script src="https://js.pusher.com/7.0/pusher.min.js"></script>
+@jquery
+@toastr_js
+@toastr_render

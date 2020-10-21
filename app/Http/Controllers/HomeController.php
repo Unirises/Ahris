@@ -16,11 +16,17 @@ class HomeController extends Controller
      */
     public function index()
     {
+     
         $user = Auth::check();
         if ($user) {
             return redirect('/login');
         }
         else{
+            // toastr()->success('Have fun storming the castle!', 'Miracle Max Says');
+            // toastr()->error('I do not think that word means what you think it means.', 'Inconceivable!'); // i want to display this one
+            // toastr()->info('Are you the 6 fingered man?'); // and this one
+            
+            // toastr()->maxItems(2);
             return view('index');
         }
 

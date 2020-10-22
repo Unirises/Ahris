@@ -1,100 +1,87 @@
-<?php
-use App\Company;
-use App\CurrentCompanyLog;
+     <?php 
+ 
+     $user_ = Auth::user();?>
+@extends('admin-dashboard.admin-layout')
+@section('content')
+    
 
-$user = Auth::user();
-$company = Company::where('user_id',$user->id)->get();
-$currentCompanyName = Session::get('companyName');
-// $currentCompanyLog = CurrentCompanyLog::where('user_id',$user->id)->get()->toArray();
-// $getCompanyLog
-?>
-<!DOCTYPE html>
-<html>
-
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta name="description" content="Start your development with a Dashboard for Bootstrap 4.">
-  <meta name="author" content="Ahris PH">
-  <title> Ahris PH | Admin Dashboard </title>
-  @extends('layouts.asset-css')
-</head>
-
-<body>
-    @include('modals.admin-add-user')
-  @include('layouts.side-nav')
- <!-- Main content -->
-  <div class="main-content" id="panel">
-    @include('layouts.topnav')
-        <div class="container-fluid mt-6">
-            <div class="row">
+        <div class="row">
                 <div class="col-md-12">
-                <h1> Users</h1>
-                <span class="text-muted"> Showing 1 to 10 of 132 entries. </span> <a class="mt-2 ml-2" href="#"> Reset</a>
+                <h1> User Authentication</h1>
+                <button type="button" class="btn btn-facebook btn-icon my-2" data-toggle="modal" data-target="#adminAddAccount">
+                  <span class="btn-inner--icon"><i class="fa fa-plus"></i></span>
+                  <span class="btn-inner--text">Add User</span>
+                </button>
+                {{-- <span class="text-muted"> Showing 1 to 10 of 132 entries. </span> <a class="mt-2 ml-2" href="#"> Reset</a> --}}
                 </div>
-            </div>
-            <button type="button" class="btn btn-facebook btn-icon my-2" data-toggle="modal" data-target="#adminAddAccount">
-                <span class="btn-inner--icon"><i class="fa fa-plus"></i></span>
-                <span class="btn-inner--text">Add User</span>
-              </button>
-
-            <div class="row mt-4">
-                <div class="col-md-2">
-                <div class="form-group">
-                    <select class="form-control border-0" id="exampleFormControlSelect1">
-                      <option>Roles</option>
-                    </select>
-                  </div>
-                </div>
-                <div class="col-md-2">
-                  <div class="form-group">
-                    <select class="form-control border-0" id="exampleFormControlSelect2">
-                      <option>Extra Permission</option>
-                    </select>
-                  </div>
-                </div>
-            </div>
-
-            <div class="card">
+              
+          </div>
+          <div class="card">
+          <div class="col-md mb-4">
+    
                 <!-- Light table -->
+         
                 <div class="table-responsive">
-                  <table class="table align-items-center table-flush">
+                  <table data-toggle="table" data-search="true"data-pagination="true"
+                  class="table align-items-center table-flush">
                     <thead class="thead-light">
                       <tr>
-                        <th scope="col" class="sort" data-sort="name">Name</th>
-                        <th scope="col" class="sort" data-sort="email">Email</th>
-                        <th scope="col" class="sort" data-sort="roles">Roles</th>
-                        <th scope="col" class="sort" data-sort="extrapermission">Extra Permission</th>
+                        <th scope="col" data-sortable="true" data-field="name">Name</th>
+                        <th scope="col"  data-sortable="true" data-field="email">Email</th>
+                        <th scope="col"  data-sortable="true" data-field="roles">Roles</th>
+                        {{-- <th scope="col"  data-sortable="true" data-field="extrapermission">Extra Permission</th> --}}
+                        <th scope="col" >Action</th>
                       </tr>
                     </thead>
                     <tbody class="list">
+
+                      @foreach ($usersRecord as $user)
                       <tr>
                         <th scope="row">
-                            <span class="name mb-0 text-sm">{{$user->firstname.' '.$user->lastname}}</span>
+                        <span class="name mb-0 text-sm"></span>
                           <div class="media align-items-center">
                             <div class="media-body">
-                              <span class="name mb-0 text-sm"></span>
+                            <span class="name mb-0 text-sm">{{$user['firstname']}} {{$user['lastname']}}</span>
                             </div>
                           </div>
                         </th>
                         <td class="email">
-                            <span class="name mb-0 text-sm">{{$user->email}}</span>
+                            <span class="name mb-0 text-sm">{{$user['email']}}</span>
                         </td>
                         <td>
-                          <span class="badge badge-dot mr-4">
+                          {{$user['role']}}
+                          {{-- @foreach ($user->roles as $role)
+                           {{$role->display_name}}
+                          @endforeach --}}
+
+                          {{-- <span class="badge badge-dot mr-4">
                             <i class="bg-success"></i>
                             <span class="status"></span>
-                          </span>
+                          </span> --}}
                         </td>
+                        {{-- <td>
+                            <span class="name mb-0 text-sm">
+  
+                            
+                             <?=//wordwrap($user['permission'],30,"<br />\n")?>
+                            </span>
+                        </td> --}}
                         <td>
-                            <span class="name mb-0 text-sm"></span>
+                          <div class="row">
+                            <button class="btn btn-primary btn-sm">Edit</button>
+                            @if ($user['id'] != Auth::user()->id)
+                              <button class="btn btn-warning btn-sm">Delete</button>
+                            @endif
+                          </div>
+                        
                         </td>
                       </tr>
+                      @endforeach
                     </tbody>
                   </table>
                 </div>
                 <!-- Card footer -->
-                <div class="card-footer py-4">
+                {{-- <div class="card-footer py-4">
                   <nav aria-label="...">
                     <ul class="pagination justify-content-end mb-0">
                       <li class="page-item disabled">
@@ -118,11 +105,7 @@ $currentCompanyName = Session::get('companyName');
                       </li>
                     </ul>
                   </nav>
-                </div>
+                </div> --}}
               </div>
-        </div>
-  </div>
-  @extends('admin.asset-js')
-</body>
-
-</html>
+              </div>
+@endsection

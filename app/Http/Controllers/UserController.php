@@ -26,8 +26,6 @@ class UserController extends Controller
         $this->middleware(['auth','role:user','verified']);
     }
 
-    
-
     public function exportTest(Request $req)
     {
        $companyID = $req->session()->get('company_id');
@@ -63,7 +61,6 @@ class UserController extends Controller
         $user = Auth::user();
         $user_id = $user->id;
         $checkUserHasCompany = Company::where('user_id',$user_id)->get()->toArray();
-        
         if (!$checkUserHasCompany) {
             return redirect(route('company-create-form'));
         }
@@ -79,10 +76,7 @@ class UserController extends Controller
             $mySession = session($companyDetails);
             return view('user.index', compact('user'));
         }
-       
-        // $company = Company::all();
-        // return view('user.index', compact('user'));
-        // return view('user.index', compact('user'));
+
     }
 
   

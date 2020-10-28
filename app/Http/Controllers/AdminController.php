@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\User;
+use App\Permission;
+use App\Role;
 use DB;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Collection;
@@ -90,7 +92,44 @@ class AdminController extends Controller
 
    //ar-user Authentication
    public function adminUserAuth() {
-       return view('admin-dashboard.ar-user-authentication');
+        $users = User::all();
+       
+        $usersRecord = array();
+        foreach ($users as $user) {
+ 
+            foreach ($user->roles as $role) {
+                $permission_role = DB::table('permission_role')->where('role_id',$role->id)->get()->toArray();
+      
+                $count_permission = 1;
+                $permission_name = "";
+                foreach ($permission_role as $value) {
+                    $permission = DB::table('permissions')->where('id',$value->permission_id)->get();
+                    
+                    foreach ($permission as $value) {
+
+                        $permission_name .= $value->display_name.",";
+                        $count_permission++;
+                    }
+                }
+                if ($count_permission >= 11) {
+                    $permission_name = 'all';
+                }
+                $usersRecord[] = array(
+                    'id' => $user->id,
+                    'firstname' => $user->firstname,
+                    'lastname' => $user->lastname,
+                    'email' => $user->email,
+                    'role' =>  $role->display_name ,
+                    'permission' => $permission_name,
+                    'permission_count' =>  $count_permission,
+                );
+                $count_permission = 0;
+              
+            }
+        
+        }
+
+       return view('admin-dashboard.ar-user-authentication', compact('usersRecord'));
    }
 
    //ar-user User Control

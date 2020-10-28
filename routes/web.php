@@ -16,6 +16,7 @@ use App\Http\Controllers\UserController;
 
 Route::get('/', 'HomeController@index');
 
+
 Route::get('/test-pusher', function () {
     return view('admin.test-pusher');
 });

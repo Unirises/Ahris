@@ -20,11 +20,11 @@
         <form action="{{route('add-account')}}" method="post">
 
           <div class="row">
-            <div class="col-md">
+            <div class="col-md-12">
               @csrf
               <div class="form-group">
 
-        
+
                 <label for="accountType">Account Type</label>
                 <select name="account_type" id="accountType" class="form-control">
                   <option selected disabled hidden>Choose Account Type</option>
@@ -60,7 +60,7 @@
 
             </div>
 
-            <div class="col-md">
+            <div class="col-md-12">
               <div class="form-group">
                 <label class="form-control-label" for="example3cols1Input">Description</label>
                 <input type="text" name="description" class="form-control" id="example3cols1Input">
@@ -72,7 +72,7 @@
                   @foreach ($tax_rates as $item)
                 <option selected value="{{$item->id}},{{$item->name}}({{$item->tax_rate}}%)" >{{$item->name}} ({{$item->tax_rate}}%)</option>
                   @endforeach
-                  
+
                 </select>
               </div>
             </div>

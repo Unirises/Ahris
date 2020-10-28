@@ -44,21 +44,21 @@
                 <h5>Roles</h5>
             </div>
                 <div class="form-group">
-                <div class="custom-control custom-checkbox mb-3">
+                <div class="custom-control custom-checkbox mb-3 ml-2">
                     <input class="custom-control-input" id="customCheck1" type="checkbox">
                     <label class="custom-control-label" for="customCheck1">Super Admin</label>
                   </div>
                 </div>
                 <div class="form-group">
-                  <div class="custom-control custom-checkbox mb-3">
-                    <input class="custom-control-input" id="customCheck1" type="checkbox">
-                    <label class="custom-control-label" for="customCheck1">Admin</label>
+                  <div class="custom-control custom-checkbox mb-3 ml-6">
+                    <input class="custom-control-input" id="customCheck2" type="checkbox">
+                    <label class="custom-control-label" for="customCheck2">Admin</label>
                   </div>
                 </div>
                 <div class="form-group">
-                  <div class="custom-control custom-checkbox mb-3">
-                    <input class="custom-control-input" id="customCheck1" type="checkbox">
-                    <label class="custom-control-label" for="customCheck1">Member</label>
+                  <div class="custom-control custom-checkbox mb-3 ml-6">
+                    <input class="custom-control-input" id="customCheck3" type="checkbox">
+                    <label class="custom-control-label" for="customCheck3">Member</label>
                   </div>
                 </div>
 
@@ -67,63 +67,60 @@
                 </div>
                     <div class="form-group">
                     <div class="custom-control custom-checkbox mb-3 ml-2">
-                        <input class="custom-control-input" id="customCheck1" type="checkbox">
-                        <label class="custom-control-label" for="customCheck1">Manage News</label>
+                        <input class="custom-control-input" id="customCheck4" type="checkbox">
+                        <label class="custom-control-label" for="customCheck4">Manage News</label>
                       </div>
                     </div>
                     <div class="form-group">
-                      <div class="custom-control custom-checkbox mb-3 ml-2">
-                        <input class="custom-control-input" id="customCheck1" type="checkbox">
-                        <label class="custom-control-label" for="customCheck1">Manage Pages</label>
+                      <div class="custom-control custom-checkbox mb-3 ml-4">
+                        <input class="custom-control-input" id="customCheck5" type="checkbox">
+                        <label class="custom-control-label" for="customCheck5">Manage Pages</label>
                       </div>
                     </div>
                     <div class="form-group">
-                      <div class="custom-control custom-checkbox mb-3 ml-2">
-                        <input class="custom-control-input" id="customCheck1" type="checkbox">
-                        <label class="custom-control-label" for="customCheck1">Manage Menu Items</label>
+                      <div class="custom-control custom-checkbox mb-3 ml-4">
+                        <input class="custom-control-input" id="customCheck6" type="checkbox">
+                        <label class="custom-control-label" for="customCheck6">Manage Menu Items</label>
                       </div>
+                    </div>
+                    <div class="form-group">
+                    <div class="custom-control custom-checkbox mb-3 ml-2">
+                        <input class="custom-control-input" id="customCheck7" type="checkbox">
+                        <label class="custom-control-label" for="customCheck7">Manage Users</label>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="custom-control custom-checkbox mb-3 ml-4">
+                            <input class="custom-control-input" id="customCheck8" type="checkbox">
+                            <label class="custom-control-label" for="customCheck8">Manage Roles</label>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="custom-control custom-checkbox mb-3 ml-4">
+                            <input class="custom-control-input" id="customCheck9" type="checkbox">
+                            <label class="custom-control-label" for="customCheck9">Manage Permissions</label>
+                        </div>
                     </div>
                     <div class="form-group">
                         <div class="custom-control custom-checkbox mb-3 ml-2">
-                            <input class="custom-control-input" id="customCheck1" type="checkbox">
-                            <label class="custom-control-label" for="customCheck1">Manage Users</label>
-                          </div>
+                            <input class="custom-control-input" id="customCheck10" type="checkbox">
+                            <label class="custom-control-label" for="customCheck10">File Manager</label>
                         </div>
-                        <div class="form-group">
-                            <div class="custom-control custom-checkbox mb-3 ml-2">
-                                <input class="custom-control-input" id="customCheck1" type="checkbox">
-                                <label class="custom-control-label" for="customCheck1">Manage Roles</label>
-                              </div>
-                            </div>
-                            <div class="form-group">
-                                <div class="custom-control custom-checkbox mb-3 ml-2">
-                                    <input class="custom-control-input" id="customCheck1" type="checkbox">
-                                    <label class="custom-control-label" for="customCheck1">Manage Permissions</label>
-                                  </div>
-                                </div>
-                                <div class="form-group">
-                                    <div class="custom-control custom-checkbox mb-3 ml-2">
-                                        <input class="custom-control-input" id="customCheck1" type="checkbox">
-                                        <label class="custom-control-label" for="customCheck1">File Manager</label>
-                                      </div>
-                                    </div>
-                                    <div class="form-group">
-                                        <div class="custom-control custom-checkbox mb-3 ml-2">
-                                            <input class="custom-control-input" id="customCheck1" type="checkbox">
-                                            <label class="custom-control-label" for="customCheck1">Logs</label>
-                                          </div>
-                                        </div>
-                                        <div class="form-group">
-                                            <div class="custom-control custom-checkbox mb-3 ml-2">
-                                                <input class="custom-control-input" id="customCheck1" type="checkbox">
-                                                <label class="custom-control-label" for="customCheck1">Backups</label>
-                                              </div>
-                                            </div>
-
-
+                    </div>
+                    <div class="form-group">
+                        <div class="custom-control custom-checkbox mb-3 ml-4">
+                            <input class="custom-control-input" id="customCheck11" type="checkbox">
+                            <label class="custom-control-label" for="customCheck11">Logs</label>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="custom-control custom-checkbox mb-3 ml-4">
+                            <input class="custom-control-input" id="customCheck12" type="checkbox">
+                            <label class="custom-control-label" for="customCheck12">Backups</label>
+                        </div>
+                    </div>
+                </div>
             </div>
-
-        </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-white" data-dismiss="modal">Close</button>
           <button type="submit" class="btn btn-success">Save and Back</button>

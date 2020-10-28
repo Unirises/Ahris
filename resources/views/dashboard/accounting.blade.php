@@ -19,31 +19,31 @@
                             </div>
                             @include('modals.add-account')
                             <div class="col-md-12 mb-3">
-                                <button class="btn btn-icon btn-primary" data-toggle="modal" data-target="#addAccountModal" type="button">
+                                <button class="btn btn-icon btn-primary mb-1" data-toggle="modal" data-target="#addAccountModal" type="button">
                                     <span class="btn-inner--icon"><i class="fa fa-plus-square"></i></span>
                                     <span class="btn-inner--text">Add Account</span>
                                   </button>
-                       
-                                  <button class="btn btn-icon btn-primary" data-toggle="modal" data-target="#exampleModal" type="button">
+
+                                  <button class="btn btn-icon btn-primary mb-1" data-toggle="modal" data-target="#exampleModal" type="button">
                                     <span class="btn-inner--icon"><i class="fa fa-file-pdf"></i></span>
                                     <span class="btn-inner--text">Print PDF</span>
                                   </button>
 
-                                  <button class="btn btn-icon btn-outline-primary" data-toggle="modal" data-target="#exampleModal" type="button">
+                                  <button class="btn btn-icon btn-outline-primary mb-1" data-toggle="modal" data-target="#exampleModal" type="button">
                                     <span class="btn-inner--icon"><i class="fa fa-plus-square"></i></span>
                                     <span class="btn-inner--text">Export</span>
                                   </button>
 
-                                  
+
                             </div>
-                            <div class="col text-right">
+                            <div class="col text-left">
                               <button class="btn btn-icon btn-youtube mb-3" id="delete-aaccount" type="button">
                                   <span class="btn-inner--icon"><i class="fa fa-trash"></i></span>
                                   <span class="btn-inner--text">Delete</span>
                                 </button>
-                              <button class="btn btn-icon btn-youtube mb-3" id="delete-aaccount" type="button">
-                                  <span class="btn-inner--icon"><i class="fa fa-trash"></i></span>
-                                  <span class="btn-inner--text">Delete</span>
+                              <button class="btn btn-icon btn-facebook mb-3" id="delete-aaccount" type="button">
+                                  <span class="btn-inner--icon"><i class="fa fa-file-archive"></i></span>
+                                  <span class="btn-inner--text">Archive</span>
                                 </button>
                               </div>
                         </div>
@@ -91,9 +91,9 @@
                                             </thead>
 
                                             <tbody class="list">
-                                       
+
                                               @foreach ($accounts as $account)
-        
+
                                               <tr>
                                                 <th>
                                                     <div class="custom-control custom-checkbox">
@@ -104,7 +104,7 @@
                                                   </th>
                                                 <th scope="row">
                                                   <div class="media align-items-center">
-                                                 
+
                                                     <div class="media-body">
                                                       <span class="name mb-0 text-sm">{{$account->name}}</span>
                                                     </div>
@@ -114,7 +114,7 @@
                                                   {{$account->type}}
                                                 </td>
                                                 <td>{{$account->tax}}</td>
-                                                
+
                                               </tr>
                                               @endforeach
                                             </tbody>
@@ -155,26 +155,20 @@
 
                               <div id="account-liabilities" class="tab-pane fade active show" role="tabpanel" aria-labelledby="tooltip-html-tab">
 
-
                             </div>
 
                             <div id="account-equity" class="tab-pane fade active show" role="tabpanel" aria-labelledby="tooltip-html-tab">
 
-
                             </div>
 
                             <div id="account-expenses" class="tab-pane fade active show" role="tabpanel" aria-labelledby="tooltip-html-tab">
-
-
                             </div>
 
                             <div id="account-revenue" class="tab-pane fade active show" role="tabpanel" aria-labelledby="tooltip-html-tab">
 
-
                             </div>
 
                             <div id="account-archive" class="tab-pane fade active show" role="tabpanel" aria-labelledby="tooltip-html-tab">
-
 
                             </div>
                             </div>
@@ -263,8 +257,6 @@
                           </div>
                         </div>
                 </div>
-            </div>
-
    @extends('layouts.asset-js')
 
 </body>
